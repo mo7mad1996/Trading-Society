@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "TanseekModernProArabic-ExBold";
+  src: url("@/assets/fonts/TanseekModernProArabic-Light.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Clarendon";
+  src: url("@/assets/fonts/ClarendonRegular.otf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("@/assets/fonts/SFPRODISPLAYREGULAR.OTF") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Motken noqta ii";
+  src: url("@/assets/fonts/Motken_noqta_i_Regular.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,0 +1,87 @@
+.flex {
+  display: flex;
+}
+.items-center {
+  align-items: center;
+}
+.flex-col {
+  flex-direction: column;
+}
+.justify-center {
+  justify-content: center;
+}
+.text-field {
+  color: #fff !important;
+}
+.loader {
+  font-size: 48px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  display: inline-block;
+  color: #ecbc56;
+  letter-spacing: 2px;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  letter-spacing: 5px;
+}
+.sidebar-link:hover {
+  background: linear-gradient(90deg, #191919 30.89%, #856a30 100%);
+  border-radius: 12px;
+  height: 50px !important;
+}
+.loader::after {
+  content: "Trading Society";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: animloader 3.5s linear infinite;
+}
+.trade_alert {
+  filter: drop-shadow(0px 1px 16.6px #ecbc56);
+}
+.active_category {
+  background-color: #ecbc56 !important;
+}
+.active_instructor {
+  background-color: #ecbc56 !important;
+}
+.filter {
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+.calenderDate {
+  width: 250.01px;
+  height: 10px;
+  background: linear-gradient(90deg, #191919 57.89%, #856a30 100%);
+  margin: 0 auto;
+  transform: translateX(-55px);
+}
+.text-gradient {
+  background: linear-gradient(90deg, #d6aa1c 0%, #5d5329 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  filter: drop-shadow(0px 1px 16.6px #ecbc56);
+}
+.progress-bar {
+  border: 16px solid;
+  border-image-source: linear-gradient(180deg, #fe4438 13.32%, #e4cb86 100%);
+}
+.active {
+  background-color: #ecbc56;
+  border-radius: 30px 0 0 30px;
+  width: 100%;
+}
+.rotateImg {
+  animation: spin 3s linear infinite;
+  transform-origin: center;
+}
+.sub-link:hover {
+  color: #ecbc56 !important;
+}
