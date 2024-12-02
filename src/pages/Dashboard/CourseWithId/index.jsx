@@ -39,6 +39,8 @@ function CourseWithId() {
 
       const data = res?.data?.course;
       setCourse(data);
+
+      console.log(data);
     } catch (err) {
       setErr(err?.response?.data?.message);
       console.error(err);
@@ -138,7 +140,7 @@ function CourseWithId() {
         )}
       </Typography>
       <Grid2 container spacing={2}>
-        {course?.course_vedios?.map((video) => (
+        {course?.course_videos?.map((video) => (
           <Grid2 item xs={12} sm={6} md={4} key={video?.id}>
             <Card
               sx={{ cursor: "pointer", backgroundColor: "transparent" }}

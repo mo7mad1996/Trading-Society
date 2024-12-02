@@ -358,8 +358,8 @@ const WelcomeVideo = ({ url }) => {
   return (
     <h1>
       {isVideo ? (
-        <video controlers style={{ width: "100%", maxWidth: "400px" }}>
-          <source src="url" />
+        <video controls style={{ width: "100%", maxWidth: "400px" }}>
+          <source src={url} />
         </video>
       ) : (
         <img src={url} style={{ width: "100%", maxWidth: "400px" }} />

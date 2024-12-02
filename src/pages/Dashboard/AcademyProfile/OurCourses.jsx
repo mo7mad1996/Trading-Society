@@ -25,30 +25,34 @@ function OurCourses() {
   const navigate = useNavigate();
 
   // methods
-  async function getCourses() {
-    const res = await api.get("/courses");
+  const getCourses = async () => {
+    try {
+      const res = await api.get("/courses");
 
-    setCategories(res?.data?.courses?.data);
-    // Set the first category as the default
-    if (res?.data?.courses?.data?.length > 0) {
-      setCurrentCategory(res.data.courses.data[0].category_name);
+      const data = res.data.courses;
+
+      setCategories(data);
+      // Set the first category as the default
+      if (data.length) {
+        setCurrentCategory(data[0].name);
+      }
+    } catch (err) {
+      console.error(err);
     }
-  }
+  };
 
-  function splitDescription(description) {
+  const splitDescription = (description) => {
     return description.split("\r\n").filter((line) => line.trim() !== "");
-  }
-  function getCoursesData() {
+  };
+  const getCoursesData = () => {
     if (currentCategory) {
-      const category = categories.find(
-        (c) => c.category_name === currentCategory
-      );
+      const category = categories.find((c) => c.name === currentCategory);
       if (category) {
         return category.courses;
       }
     }
     return [];
-  }
+  };
 
   // onRender
   useEffect(() => {
@@ -96,14 +100,12 @@ function OurCourses() {
                 textTransform: "capitalize",
                 color: "#fff",
                 backgroundColor:
-                  currentCategory === categoryData.category_name
+                  currentCategory === categoryData.name
                     ? "white"
                     : "transparent",
               }}
               className={
-                currentCategory === categoryData.category_name
-                  ? "active_category"
-                  : ""
+                currentCategory === categoryData.name ? "active_category" : ""
               }
               onClick={(e) => {
                 if (activeCategory) {
@@ -112,10 +114,10 @@ function OurCourses() {
 
                 e.currentTarget.classList.add("active_category");
                 setActiveCategory(e.currentTarget);
-                setCurrentCategory(categoryData.category_name);
+                setCurrentCategory(categoryData.name);
               }}
             >
-              {categoryData.category_name}
+              {categoryData.name}
             </Button>
           </Box>
         ))}
@@ -165,8 +167,8 @@ function OurCourses() {
                     height: "200px",
                   }}
                   component="img"
-                  image={course?.course_photo}
-                  alt={course?.course_title}
+                  image={course?.photo}
+                  alt={course?.title}
                 />
                 <CardContent sx={{ color: "#fff", width: "100%" }}>
                   <Typography
@@ -179,7 +181,7 @@ function OurCourses() {
                       color: "#ecbc56",
                     }}
                   >
-                    {course?.course_title}
+                    {course.title}
                   </Typography>
                   <Typography
                     variant="subtitle1"
@@ -189,19 +191,17 @@ function OurCourses() {
                       fontSize: { xs: "12px", sm: "15px" },
                     }}
                   >
-                    Instructor: {course?.course_instructor_name}
+                    Instructor: {course.instructor?.name}
                   </Typography>
-                  {splitDescription(course?.course_description).map(
-                    (line, i) => (
-                      <Typography
-                        key={i}
-                        variant="body1"
-                        sx={{
-                          fontSize: { xs: "16px", sm: "25px", width: "100%" },
-                        }}
-                      ></Typography>
-                    )
-                  )}
+                  {splitDescription(course.description).map((line, i) => (
+                    <Typography
+                      key={i}
+                      variant="body1"
+                      sx={{
+                        fontSize: { xs: "16px", sm: "25px", width: "100%" },
+                      }}
+                    ></Typography>
+                  ))}
                   <Box
                     sx={{
                       display: "flex",
@@ -235,7 +235,7 @@ function OurCourses() {
                     >
                       Duration:{" "}
                       <Typography variant="span">
-                        {course?.course_total_hours}
+                        {course.total_hours}
                       </Typography>
                     </Typography>
                   </Box>
