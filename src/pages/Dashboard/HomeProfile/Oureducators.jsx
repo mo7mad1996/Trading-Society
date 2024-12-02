@@ -9,25 +9,19 @@ import {
   Rating,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
-import axios from "axios";
+import useApi from "@/api";
 
 function EducatorsCard() {
   const [instructors, setInstructors] = useState([]);
   const navigate = useNavigate(); // Initialize useNavigate
 
+  const api = useApi();
+
   // Fetch instructors from the API
   useEffect(() => {
     const fetchInstructors = async () => {
       try {
-        const token = "8|eEHv78njsx13Od5yximIT2iP7IYj7Y9nq04dWWqa97d27bae"; // API token
-        const response = await axios.get(
-          "https://laravelapi.tradingsociety.net/api/v1/instructor",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await api.get("/instructor");
 
         if (response.data.status && response.data.instructors) {
           const instructorData = response.data.instructors.data.map(

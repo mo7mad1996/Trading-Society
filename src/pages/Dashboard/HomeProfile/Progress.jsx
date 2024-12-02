@@ -3,9 +3,10 @@ import { GoMortarBoard } from "react-icons/go";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import CircularProgressBar from "@/Components/CircularProgressBar";
-import axios from "axios";
+import useApi from "@/api";
 
 function Progress() {
+  const api = useApi();
   const [educators, setEducators] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,9 +14,8 @@ function Progress() {
     // Fetch instructors' performance data
     const fetchEducators = async () => {
       try {
-        const response = await axios.get(
-          "https://laravelapi.tradingsociety.net/api/v1/instructors-performance"
-        );
+        const response = await api.get("/instructors-performance");
+
         if (response.data.status) {
           setEducators(response.data.instructor_performance_data);
         }

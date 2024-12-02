@@ -15,7 +15,6 @@ function Cards() {
     // lastName,
     phone,
   } = useContext(TokenContext);
-  console.log(userEmail);
 
   const [userInfo] = useState([
     { label: "Name", value: userFirstName },

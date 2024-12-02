@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { DarkModeContext } from "@/context";
-import axios from "axios";
+import useApi from "@/api";
 
 // components
 import { Box, Typography } from "@mui/material";
@@ -21,7 +21,7 @@ function TraderPairInfo({ pair }) {
         borderRadius: "3px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center", // لمركز النصوص داخل الصندوق
+        justifyContent: "center",
       }}
     >
       <Typography
@@ -40,17 +40,15 @@ function TraderPairInfo({ pair }) {
 
 // Main component for the trade alert profile
 function TradeAlertProfile() {
+  const api = useApi();
   let navigate = useNavigate();
   const [offers, setOffers] = useState([]);
   let { baseUrl } = useContext(DarkModeContext);
 
   // Fetch data from the API
   async function tradeAlert() {
-    let res = await axios.get(`${baseUrl}/offers`, {
-      headers: {
-        Authorization: `Bearer 29|Ty80fgEhfB5ll2b5og6dTY5WJWqIxwPCZRD2jVNOa50891a8`,
-      },
-    });
+    let res = await api.get(`/offers`);
+
     setOffers(res?.data?.all_offers?.data);
   }
 

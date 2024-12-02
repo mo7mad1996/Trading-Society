@@ -1,23 +1,17 @@
 import { Box, Typography } from "@mui/material";
-import axios from "axios";
 import { useState, useEffect } from "react";
-import progress_bar from "../home_profile_assets/progress_img.png";
+import progress_bar from "@/home_profile_assets/progress_img.png";
+import useApi from "@/api";
 
 const CircularProgressBar = () => {
   const [instructors, setInstructors] = useState([]);
 
+  const api = useApi();
+
   useEffect(() => {
     const fetchInstructors = async () => {
       try {
-        const token = "8|eEHv78njsx13Od5yximIT2iP7IYj7Y9nq04dWWqa97d27bae"; // API token
-        const response = await axios.get(
-          "https://laravelapi.tradingsociety.net/api/v1/instructors-performance",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await api.get("/instructors-performance");
 
         if (response.data.status) {
           const formattedData = response.data.instructor_performance_data.map(
@@ -29,7 +23,10 @@ const CircularProgressBar = () => {
           );
           setInstructors(formattedData);
         } else {
-          console.error("Failed to fetch instructor data:", response.data.message);
+          console.error(
+            "Failed to fetch instructor data:",
+            response.data.message
+          );
         }
       } catch (error) {
         console.error("Error fetching instructors:", error);

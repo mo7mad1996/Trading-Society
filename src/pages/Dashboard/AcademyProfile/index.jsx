@@ -58,7 +58,6 @@ function AcademyProfile() {
         sx={{
           position: "relative",
           width: "100%",
-          maxWidth: "1200px",
           margin: "auto",
           display: "flex",
           justifyContent: "start",
@@ -207,10 +206,9 @@ function AcademyProfile() {
                     >
                       <Box
                         sx={{
-                          width: "80px",
                           height: "120px",
                           borderRadius: "50%",
-                          mr: "10px",
+                          m: "10px",
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "top",
@@ -218,13 +216,14 @@ function AcademyProfile() {
                       >
                         <Box
                           sx={{
-                            width: "80px",
-                            height: "100px",
+                            height: "100%",
+                            display: "block",
+                            aspectRatio: 1,
                             borderRadius: "50%",
                           }}
                           component="img"
-                          src={instructorWithId.Instructor_image}
-                          alt={instructorWithId.Instructor_name}
+                          src={instructorWithId.photo}
+                          alt={instructorWithId.name}
                         />
                       </Box>
                       <Box
@@ -242,7 +241,7 @@ function AcademyProfile() {
                             fontWeight: "bold",
                           }}
                         >
-                          {instructorWithId.Instructor_name}
+                          {instructorWithId.name}
                         </Typography>
                         <Box sx={{ color: "#ECBC56" }}>
                           {Array(5)
@@ -288,21 +287,21 @@ function AcademyProfile() {
                     <Typography sx={{ lineHeight: "3px" }}>
                       Meet Our Educator <br />
                       <Typography component="span" sx={{ color: "#ECBC56" }}>
-                        {instructorWithId.Instructor_name}
+                        {instructorWithId.name}
                       </Typography>
                     </Typography>
 
                     <Box
                       sx={{
-                        width: { xs: "100%", md: "300px" }, // عرض كامل في الشاشات الصغيرة
+                        width: { xs: "100%", md: "300px" },
                         height: "202px",
-                        mt: { xs: "10px", md: "0" }, // مسافة من الأعلى في الشاشات الصغيرة
+                        mt: { xs: "10px", md: "0" },
                       }}
                     >
                       <Box
                         component="img"
-                        src={instructorWithId.Instructor_image}
-                        alt={instructorWithId.Instructor_name}
+                        src={instructorWithId.photo}
+                        alt={instructorWithId.name}
                         sx={{
                           width: "100%",
                           height: "100%",
@@ -335,162 +334,9 @@ function AcademyProfile() {
                       {/* {instructorWithId?.courses[0].category_name} */}
                     </Typography>
                   )}
-
-                {/* عرض الفيديوهات بناءً على المستوى */}
-                {instructorWithId.courses &&
-                  instructorWithId.courses.length > 0 && (
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: "20px",
-                        mt: "20px",
-                        justifyContent: { xs: "center", md: "flex-start" },
-                      }}
-                    >
-                      {instructorWithId?.courses[0]?.course_vedios?.map(
-                        (video, index) => (
-                          <Box
-                            key={index}
-                            sx={{
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                              flexBasis: {
-                                xs: "100%",
-                                sm: "48%",
-                                md: "calc(33.33% - 20px)",
-                              },
-                              marginBottom: "20px",
-                            }}
-                            onClick={() => handleVideoClick(video?.video_url)}
-                          >
-                            <Box
-                              sx={{
-                                width: "100%",
-                                height: "189px",
-                                position: "relative",
-                              }}
-                            >
-                              <Box
-                                component="img"
-                                src={video?.vedio_image}
-                                alt={video?.course_name}
-                                style={{
-                                  width: "100%",
-                                  height: "100%",
-                                  backgroundSize: "cover",
-                                  borderRadius: "8px",
-                                  objectFit: "cover",
-                                }}
-                              />
-                              <Box
-                                sx={{
-                                  width: "62px",
-                                  height: "54px",
-                                  backgroundColor: "#FFFBFB82",
-                                  top: "30%",
-                                  left: "50%",
-                                  position: "absolute",
-                                  transform: "translateX(-50%)",
-                                  display: "flex",
-                                  justifyContent: "center",
-                                  alignItems: "center",
-                                  borderRadius: "50%",
-                                  color: "#ecbc56",
-                                }}
-                              >
-                                <FaPlay />
-                              </Box>
-                            </Box>
-                            <Box sx={{ mt: "10px" }}>
-                              <Typography
-                                sx={{
-                                  fontSize: { xs: "18px", md: "22px" },
-                                  fontWeight: "bold",
-                                }}
-                              >
-                                Welcome
-                                {/* {video.course_name} */}
-                              </Typography>
-                              <Typography
-                                sx={{
-                                  color: "gray",
-                                  fontSize: { xs: "14px", md: "16px" },
-                                }}
-                              >
-                                {instructorWithId.Instructor_name}
-                              </Typography>
-                              <Box
-                                sx={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  mt: "5px",
-                                }}
-                              >
-                                {Array(5)
-                                  .fill(0)
-                                  .map((_, i) => (
-                                    <FaStar
-                                      key={i}
-                                      style={{
-                                        width: "15px",
-                                        height: "15px",
-                                        color: "#ECBC56",
-                                      }}
-                                    />
-                                  ))}
-                                <Typography
-                                  sx={{
-                                    color: "gray",
-                                    fontSize: { xs: "10px", sm: "20px" },
-                                  }}
-                                >
-                                  10{" "}
-                                  <Typography
-                                    component="span"
-                                    sx={{
-                                      ml: "1px",
-                                      fontFamily: "Bayon",
-                                      fontSize: "12px",
-                                    }}
-                                  >
-                                    k
-                                  </Typography>
-                                </Typography>
-                              </Box>
-                              <Box
-                                sx={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  mt: "5px",
-                                }}
-                              >
-                                <IoMdTime
-                                  style={{
-                                    color: "#ECBC56",
-                                    fontSize: "18px",
-                                  }}
-                                />
-                                <Typography
-                                  sx={{ fontSize: "14px", ml: "5px" }}
-                                >
-                                  Duration:{" "}
-                                  <Typography
-                                    component="span"
-                                    sx={{ fontWeight: "bold" }}
-                                  >
-                                    {video.vedio_time}
-                                  </Typography>
-                                </Typography>
-                              </Box>
-                            </Box>
-                          </Box>
-                        )
-                      )}
-                    </Box>
-                  )}
               </Box>
+
+              <WelcomeVideo url={instructorWithId.video} />
             </Box>
           </motion.div>
         )}
@@ -501,3 +347,23 @@ function AcademyProfile() {
 }
 
 export default AcademyProfile;
+
+const WelcomeVideo = ({ url }) => {
+  const [isVideo, setIsVideo] = useState(false);
+
+  useEffect(() => {
+    if (url) setIsVideo(url.includes(".mp4"));
+  }, [url]);
+
+  return (
+    <h1>
+      {isVideo ? (
+        <video controlers style={{ width: "100%", maxWidth: "400px" }}>
+          <source src="url" />
+        </video>
+      ) : (
+        <img src={url} style={{ width: "100%", maxWidth: "400px" }} />
+      )}
+    </h1>
+  );
+};

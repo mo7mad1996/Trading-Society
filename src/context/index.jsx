@@ -26,7 +26,6 @@ function DarkModeContextProvider({ children }) {
 
   let toggleMode = () =>
     setDarkMode((prevMode) => {
-      console.log(prevMode);
       return !prevMode;
     });
 

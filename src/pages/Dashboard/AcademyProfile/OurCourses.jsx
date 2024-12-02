@@ -181,7 +181,6 @@ function OurCourses() {
                   >
                     {course?.course_title}
                   </Typography>
-
                   <Typography
                     variant="subtitle1"
                     sx={{
@@ -226,7 +225,6 @@ function OurCourses() {
                       ))}
                     </Box>
                   </Box>
-
                   <Box sx={{ display: "flex", alignItems: "center" }}>
                     <IoMdTime style={{ color: "#ECBC56" }} />
                     <Typography
