@@ -58,6 +58,7 @@ export default function LoginWithHFS() {
           mb: 4,
           textAlign: "center",
           fontSize: { xs: "30px", xl: "45px" },
+          fontFamily: "SF Pro Display",
         }}
       >
         Sign In With HFS
