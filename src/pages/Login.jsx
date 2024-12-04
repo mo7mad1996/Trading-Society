@@ -9,6 +9,7 @@ import { TokenContext } from "@/context";
 // components
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import LoginWithHFS from "@/Pages/LoginWithHFS/index.jsx";
 
 // assets
 import registerLogo from "@/assets/register_img.png";
@@ -22,6 +23,7 @@ function Login() {
 
   // data
   let [err, setErr] = useState(false);
+  let [openHFS, setOpenHFS] = useState(false);
 
   // methods
   async function signIn(values) {
@@ -44,6 +46,9 @@ function Login() {
     }
   }
 
+  const goToHFSLogin = () => {
+    setOpenHFS(true);
+  };
   let validationSchema = Yup.object({
     email: Yup.string().required("email is required"),
     password: Yup.string().required("password is required"),
@@ -96,7 +101,15 @@ function Login() {
       </Box>
 
       {/* Login form */}
-      <Box sx={{ mt: "30px", width: "70%", mx: "auto", p: "10px" }}>
+      <Box
+        sx={{
+          mt: "30px",
+          width: "70%",
+          mx: "auto",
+          p: "10px",
+          overflow: "auto",
+        }}
+      >
         <Typography
           sx={{ color: "#fff", fontSize: { xs: "30px", xl: "45px" } }}
         >
@@ -203,12 +216,13 @@ function Login() {
               style={{
                 textDecoration: "underline",
                 cursor: "pointer",
-                width: "30%",
+                width: "100%",
                 color: "#fff",
               }}
             >
-              Create account
+              Create an account
             </Link>
+
             <Button
               sx={{
                 boxShadow: " 0px 0px 8.4px 1px #ECBC56",
@@ -218,12 +232,32 @@ function Login() {
                 ml: "auto",
                 borderRadius: "5px",
                 height: "40px",
+                my: 5,
               }}
               type="submit"
             >
               Sign In
             </Button>
           </form>
+
+          <div className="divider">OR</div>
+
+          {openHFS ? (
+            <LoginWithHFS />
+          ) : (
+            <Button
+              onClick={goToHFSLogin}
+              style={{
+                textDecoration: "underline",
+                cursor: "pointer",
+                width: "100%",
+                color: "#fff",
+                background: " #C3AD57",
+              }}
+            >
+              Login with HFS
+            </Button>
+          )}
         </Box>
       </Box>
     </Box>
