@@ -1,8 +1,10 @@
 import React from "react";
 import { Box } from "@mui/material";
-import OnlineSessionCard from "./Onlinesessioncard";
 import { Typography } from "@mui/material";
-const RecordedSessonsPage = () => {
+
+import OnlineSessionCard from "./Onlinesessioncard";
+
+const RecordedSessionsPage = () => {
   return (
     <Box>
       <Box
@@ -29,4 +31,4 @@ const RecordedSessonsPage = () => {
   );
 };
 
-export default RecordedSessonsPage;
+export default RecordedSessionsPage;

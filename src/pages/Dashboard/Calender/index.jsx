@@ -78,7 +78,7 @@ const Calendar = () => {
         >
           Calendar
         </Button>
-        <Button
+        {/* <Button
           sx={{
             width: "100%",
             maxWidth: "106px",
@@ -90,11 +90,11 @@ const Calendar = () => {
             borderRadius: "5px",
           }}
           onClick={() => {
-            navigate("/sessions");
+             navigate("/sessions");
           }}
         >
           Live Session
-        </Button>
+        </Button> */}
       </Box>
 
       <Box

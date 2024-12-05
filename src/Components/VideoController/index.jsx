@@ -13,7 +13,7 @@ import { IoVolumeMedium, IoVolumeMute } from "react-icons/io5";
 import css from "./style.module.css";
 
 // component
-const CustomVideoPlayer = ({ src }) => {
+const CustomVideoPlayer = ({ src, poster }) => {
   const video_controller = useRef(null); // HTML ref
   const playerRef = useRef(null); // HTML ref
 
@@ -78,19 +78,28 @@ const CustomVideoPlayer = ({ src }) => {
   // render
   return (
     <div className={css.video_container} ref={video_controller}>
-      <ReactPlayer
-        ref={playerRef}
-        url={src}
-        playing={isPlaying}
-        width="100%"
-        height="100%"
-        controls={false}
-        onProgress={handleProgress}
-        onDuration={handleDuration}
-        muted={isMuted}
-        volume={volume}
-        playbackRate={playbackRate}
-      />
+      {poster && !isPlaying ? (
+        <img
+          src="your-poster-image-url.jpg" // Replace with your poster image URL
+          alt="Poster"
+          className={css.poster}
+          onClick={() => setIsPlaying(true)} // Show video when the poster is clicked
+        />
+      ) : (
+        <ReactPlayer
+          ref={playerRef}
+          url={src}
+          playing={isPlaying}
+          width="100%"
+          height="100%"
+          controls={false}
+          onProgress={handleProgress}
+          onDuration={handleDuration}
+          muted={isMuted}
+          volume={volume}
+          playbackRate={playbackRate}
+        />
+      )}
       <div className={css.controller}>
         <button onClick={handlePlayPause}>
           {isPlaying ? <IoMdPause /> : <FaPlay />}

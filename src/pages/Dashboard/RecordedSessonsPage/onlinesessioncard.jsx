@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Card,
@@ -8,79 +8,38 @@ import {
   ButtonBase,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
-import DemoPic from "@/assets/Fawzi.jpg";
+import useApi from "@/api";
 
-// Static data array for the 15 users
-const userData = [
-  {
-    id: 1,
-    name: "User 1",
-    image: DemoPic,
-    description:
-      "This is User 1. They are an experienced professional with a passion for technology and problem-solving, always looking to learn and grow in their field.",
-  },
-  {
-    id: 2,
-    name: "User 2",
-    image: DemoPic,
-    description:
-      "This is User 2. A skilled designer who specializes in creating intuitive and beautiful user interfaces, with an eye for detail and creativity.",
-  },
-  {
-    id: 3,
-    name: "User 3",
-    image: DemoPic,
-    description:
-      "This is User 3. A dedicated software engineer, who focuses on building scalable and efficient applications to solve complex challenges in the tech world.",
-  },
-  {
-    id: 3,
-    name: "User 3",
-    image: DemoPic,
-    description:
-      "This is User 3. A dedicated software engineer, who focuses on building scalable and efficient applications to solve complex challenges in the tech world.",
-  },
-  {
-    id: 3,
-    name: "User 3",
-    image: DemoPic,
-    description:
-      "This is User 3. A dedicated software engineer, who focuses on building scalable and efficient applications to solve complex challenges in the tech world.",
-  },
-  {
-    id: 3,
-    name: "User 3",
-    image: DemoPic,
-    description:
-      "This is User 3. A dedicated software engineer, who focuses on building scalable and efficient applications to solve complex challenges in the tech world.",
-  },
-  {
-    id: 3,
-    name: "User 3",
-    image: DemoPic,
-    description:
-      "This is User 3. A dedicated software engineer, who focuses on building scalable and efficient applications to solve complex challenges in the tech world.",
-  },
-  {
-    id: 3,
-    name: "User 3",
-    image: DemoPic,
-    description:
-      "This is User 3. A dedicated software engineer, who focuses on building scalable and efficient applications to solve complex challenges in the tech world.",
-  },
-  {
-    id: 3,
-    name: "User 3",
-    image: DemoPic,
-    description:
-      "This is User 3. A dedicated software engineer, who focuses on building scalable and efficient applications to solve complex challenges in the tech world.",
-  },
-  // Add more users as needed
-];
+function OnlineSessionCard() {
+  // config
+  const navigate = useNavigate();
+  const api = useApi();
 
-function Onlinesessioncard() {
-  const navigate = useNavigate(); // Initialize useNavigate
+  // data
+  const [userData, setUserData] = useState([]);
+  const [loading, setLoading] = useState([]);
 
+  // methods
+  const getUserData = async () => {
+    try {
+      setLoading(true);
+      const res = await api.get("/live-sessions");
+      const data = res.data.data;
+
+      console.log(data);
+      setUserData(data);
+    } catch (err) {
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // on component render
+  useEffect(() => {
+    getUserData();
+  }, []);
+
+  // render
   return (
     <Box
       sx={{
@@ -94,7 +53,7 @@ function Onlinesessioncard() {
       {userData.map((user) => (
         <ButtonBase
           key={user.id}
-          onClick={() => navigate(`/RecordedSessons/UserRecordedSession`)} // Redirect on click
+          onClick={() => navigate(`/RecordedSessons/${user.id}`)} // Redirect on click
           sx={{
             width: "30%",
             borderRadius: "15px",
@@ -130,7 +89,7 @@ function Onlinesessioncard() {
                 component="img"
                 height="140"
                 image={user.image}
-                alt={user.name}
+                alt={user.instructor?.name}
                 sx={{
                   width: "95%",
                   height: "95%",
@@ -142,11 +101,13 @@ function Onlinesessioncard() {
             <CardContent sx={{ textAlign: "left" }}>
               <Typography
                 variant="h6"
-                color="text.mainTheme"
                 component="div"
                 sx={{ fontWeight: "bold", mb: 2 }}
               >
-                {user.name}
+                {user.title}
+              </Typography>
+              <Typography variant="h6" component="div" sx={{ mb: 2 }}>
+                {user.instructor?.name}
               </Typography>
               <Typography variant="body6" color="text.secondary" sx={{ mb: 2 }}>
                 {user.description}
@@ -159,4 +120,4 @@ function Onlinesessioncard() {
   );
 }
 
-export default Onlinesessioncard;
+export default OnlineSessionCard;

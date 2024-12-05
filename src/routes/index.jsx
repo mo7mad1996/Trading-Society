@@ -26,8 +26,7 @@ import Categories from "@/Pages/Dashboard/Categories/index.jsx";
 import RecordedSessonsPage from "@/Pages/Dashboard/RecordedSessonsPage/index.jsx";
 import UserRecordedSession from "@/Pages/Dashboard/UserRecordedSession/index.jsx";
 import OpenDialog from "@/pages/Dashboard/TradeAlertProfile/OpenDialog";
-
-// import OnlineSessions from "@/Components/HomeProfile/OnlineSessions";
+import OnlineSessions from "@/pages/Dashboard/OnlineSessions";
 
 // routes
 const router = createBrowserRouter([
@@ -107,10 +106,10 @@ const router = createBrowserRouter([
         path: "offers/:id",
         element: <TradeAlertWithId />,
       },
-      // // {
-      // //   path: "sessions",
-      // //   element: <OnlineSessions />,
-      // // },
+      // {
+      //   path: "sessions",
+      //   element: <OnlineSessions />,
+      // },
       {
         path: "categories",
         element: <Categories />,
@@ -120,7 +119,7 @@ const router = createBrowserRouter([
         children: [
           { path: "", element: <RecordedSessonsPage /> },
           {
-            path: "UserRecordedSession",
+            path: ":id",
             element: <UserRecordedSession />,
           },
         ],

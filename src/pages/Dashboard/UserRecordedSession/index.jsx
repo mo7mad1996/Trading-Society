@@ -1,12 +1,49 @@
-import React from "react";
+import { useEffect, useState } from "react";
+
+// components
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import FooterProfile from "@/Components/Layouts/Dashboard/FooterProfile";
-import { useContext, useEffect, useState } from "react";
-import { image } from "framer-motion/m";
-import LiveVedioCard from "@/Components/HomeProfile/LiveVedioCard";
-import DemoPic from "@/assets/Fawzi.jpg";
+import VideoController from "@/components/VideoController";
+
+import useApi from "@/api";
+import { useParams } from "react-router-dom";
+
 const UserRecordedSession = () => {
+  // config
+  const api = useApi();
+  const { id } = useParams();
+
+  // data
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  // methods
+  const getData = async () => {
+    try {
+      setLoading(true);
+
+      const res = await api.get(`/live-sessions/${id}`);
+
+      const data = res.data.data;
+
+      console.log(data);
+      setData(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // onMounted
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // render
+  if (loading) return <div>Loading...</div>;
+  if (!data) return <div>There is an error</div>;
   return (
     <>
       <Box>
@@ -41,8 +78,8 @@ const UserRecordedSession = () => {
             objectFit: "cover", // Ensures the image fits properly within the Box
           }}
           component="img" // Correct HTML tag for images
-          src={DemoPic} // Source of the image
-          alt="Demo Image" // Alt text for accessibility
+          src={data.image} // Source of the image
+          alt={data.title} // Alt text for accessibility
         />
         <Box
           sx={{
@@ -51,17 +88,16 @@ const UserRecordedSession = () => {
             borderRadius: "15px",
           }}
         >
+          <Typography variant="h4">{data.title}</Typography>
           <Typography variant="h3" color="text.mainTheme">
-            Mohamed Fawzi
+            {data.instructor?.name}
           </Typography>
-          <Typography>
-            A skilled designer who specializes in creating intuitive and
-            beautiful user interfaces, with an eye for detail and creativity.
-          </Typography>
+          <Typography>{data.description}</Typography>
         </Box>
       </Box>
       <Box sx={{ height: "80px" }} />
-      <LiveVedioCard />
+
+      <VideoController src={data.video} poster={data.image} />
       <FooterProfile />
     </>
   );

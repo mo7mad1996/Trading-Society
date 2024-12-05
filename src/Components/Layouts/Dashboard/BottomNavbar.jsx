@@ -90,7 +90,6 @@ const BottomNavbar = () => {
           onClick={() => navigate("/academy")}
         />
         {/* 
-
         <BottomNavigationAction
           icon={<IoIosRadio size={24} />}
           sx={{

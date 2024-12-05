@@ -3,6 +3,7 @@ import { Box, TextField, Button, Typography } from "@mui/material";
 import axios from "axios";
 
 const OnlineSession = () => {
+  // data
   const [formData, setFormData] = useState({
     meeting_id: "",
     fullname: "",
@@ -12,6 +13,7 @@ const OnlineSession = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  // methods
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -23,7 +25,8 @@ const OnlineSession = () => {
         formData,
         {
           headers: {
-            "License-Key": "sEVaYMBEKdQdhCyKrQW9nC1B22N7oRGFUPhCjOEYwLI0O7gD6vzZLJQLQMhduHT7", // Include License Key here
+            "License-Key":
+              "sEVaYMBEKdQdhCyKrQW9nC1B22N7oRGFUPhCjOEYwLI0O7gD6vzZLJQLQMhduHT7", // Include License Key here
           },
         }
       );
@@ -48,6 +51,7 @@ const OnlineSession = () => {
     }
   };
 
+  // render
   return (
     <Box
       sx={{
@@ -57,7 +61,6 @@ const OnlineSession = () => {
         justifyContent: "center",
         height: "100vh",
         padding: "16px",
-        backgroundColor: "#f9f9f9",
       }}
     >
       <Typography variant="h4" sx={{ marginBottom: "24px" }}>
@@ -69,7 +72,12 @@ const OnlineSession = () => {
         name="meeting_id"
         value={formData.meeting_id}
         onChange={handleChange}
-        sx={{ marginBottom: "16px", width: "300px" }}
+        sx={{
+          marginBottom: "16px",
+          width: "300px",
+          background: "#777",
+          borderRadius: 1,
+        }}
         required
       />
       <TextField
@@ -77,7 +85,12 @@ const OnlineSession = () => {
         name="fullname"
         value={formData.fullname}
         onChange={handleChange}
-        sx={{ marginBottom: "16px", width: "300px" }}
+        sx={{
+          marginBottom: "16px",
+          width: "300px",
+          background: "#777",
+          borderRadius: 1,
+        }}
         required
       />
       <Button variant="contained" color="primary" onClick={handleSubmit}>
@@ -85,10 +98,7 @@ const OnlineSession = () => {
       </Button>
 
       {meetingURL && (
-        <Typography
-          variant="body1"
-          sx={{ marginTop: "16px", color: "green" }}
-        >
+        <Typography variant="body1" sx={{ marginTop: "16px", color: "green" }}>
           {successMessage}{" "}
           <a href={meetingURL} target="_blank" rel="noopener noreferrer">
             Click here to join
@@ -97,10 +107,7 @@ const OnlineSession = () => {
       )}
 
       {errorMessage && (
-        <Typography
-          variant="body1"
-          sx={{ marginTop: "16px", color: "red" }}
-        >
+        <Typography variant="body1" sx={{ marginTop: "16px", color: "red" }}>
           {errorMessage}
         </Typography>
       )}
