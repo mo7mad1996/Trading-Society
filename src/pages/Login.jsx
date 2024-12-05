@@ -113,7 +113,7 @@ function Login() {
         <Typography
           sx={{ color: "#fff", fontSize: { xs: "30px", xl: "45px" } }}
         >
-          Sign In
+          LogIn
         </Typography>
         {err && (
           <Typography sx={{ color: "red", fontSize: "30px" }}>{err}</Typography>
@@ -236,7 +236,7 @@ function Login() {
               }}
               type="submit"
             >
-              Sign In
+              Login
             </Button>
           </form>
 

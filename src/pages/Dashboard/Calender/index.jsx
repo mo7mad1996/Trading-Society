@@ -202,6 +202,10 @@ const Calendar = () => {
             const dayIndex = index - currentMonth.startOf("month").day();
             const isDay = dayIndex >= 0 && dayIndex < daysInMonth;
             const isLastRow = Math.floor(index / 7) === totalRows - 1; // Check if the cell is in the last row
+            const isToday = dayjs().isSame(
+              currentMonth.date(dayIndex + 1),
+              "day"
+            );
 
             return (
               <Box
@@ -228,7 +232,9 @@ const Calendar = () => {
                   "&:hover": isDay
                     ? { backgroundColor: "#C3AD57", color: "#000" }
                     : {},
+                  "&.today": { backgroundColor: "#C3AD57", color: "#000" },
                 }}
+                className={isToday && "today"}
                 onClick={
                   isDay
                     ? () =>

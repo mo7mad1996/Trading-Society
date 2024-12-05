@@ -7,16 +7,16 @@ function AboutUsText() {
   return (
     <Box
       component="section"
+      id="aboutus"
       sx={{
         // marginBlock: "100px",
         paddingX: { xs: "20px", sm: "30px", md: "50px" },
         paddingY: { xs: "20px", sm: "30px", md: "30px" },
-      //  backgroundColor: "white",
-       height: "20vh",
-       display: "flex",
-       flexDirection: "column",
-       justifyContent: "center",
-      
+        //  backgroundColor: "white",
+        height: "20vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
       }}
     >
       <Box
@@ -29,8 +29,7 @@ function AboutUsText() {
           paddingY: "10px",
           paddingLeft: { xs: "20px", md: "50px" },
           mt: "10px",
-          ml:"20px",
-          
+          ml: "20px",
         }}
       >
         <motion.div
@@ -42,7 +41,6 @@ function AboutUsText() {
             component="h3"
             variant="body1"
             sx={{
-              
               fontSize: { xs: "20px", md: "24px", xl: "45px" },
               color: "text.primary",
             }}
@@ -54,7 +52,7 @@ function AboutUsText() {
           sx={{
             border: "5px solid #ECBC56",
             width: { xs: "100px", md: "251px" },
-            mt:"7.5px"
+            mt: "7.5px",
           }}
         />
       </Box>

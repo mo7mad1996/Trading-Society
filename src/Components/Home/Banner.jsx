@@ -24,13 +24,14 @@ function Banner() {
 
   return (
     <Box sx={{ mt: "200px", mb: "50px" }}>
+      htis
       <Box sx={{ position: "relative", overflow: "hidden" }}>
         <Swiper
           spaceBetween={0}
           slidesPerView={1}
           autoplay={{ delay: 2000 }}
           modules={[Autoplay]}
-          style={{width:"100%"}}
+          style={{ width: "100%" }}
         >
           {Array.from({ length: 4 }).map((_, index) => (
             <SwiperSlide

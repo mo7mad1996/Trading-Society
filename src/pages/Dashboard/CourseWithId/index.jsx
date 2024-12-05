@@ -42,7 +42,7 @@ function CourseWithId() {
 
       console.log(data);
     } catch (err) {
-      setErr(err?.response?.data?.message);
+      setErr(err?.response?.data?.message || err.message);
       console.error(err);
     } finally {
       setLoading(false);
@@ -58,7 +58,7 @@ function CourseWithId() {
       setMessage(data);
     } catch (err) {
       console.error(err);
-      setMessage(err.response.data.message);
+      setMessage(err.response?.data?.message || err.message);
     }
   };
 

@@ -171,7 +171,7 @@ export default function LoginWithHFS() {
             }}
             type="submit"
           >
-            Sign In
+            Login
           </Button>
         </form>
       </Box>

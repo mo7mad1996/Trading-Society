@@ -1,17 +1,27 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { DarkModeContext } from "@/context";
+import { useEffect, useState } from "react";
 import useApi from "@/api";
 
 // components
 import { Box, Typography } from "@mui/material";
+import { FaRegCopy } from "react-icons/fa6";
+import { IoCheckmarkDoneOutline } from "react-icons/io5";
 
 // assets
 import profile_img from "@/home_profile_assets/profile_img.png";
 import checkIcon from "@/home_profile_assets/vector_2.png";
+import { Outlet, useNavigate } from "react-router-dom";
 
 // Reusable component for displaying trader's pair information
 function TraderPairInfo({ pair }) {
+  const [copied, setCopied] = useState(false);
+
+  const copy = () => {
+    setCopied(true);
+    navigator.clipboard.writeText(pair);
+
+    setTimeout(() => setCopied(false), 1000);
+  };
+
   return (
     <Box
       sx={{
@@ -22,7 +32,52 @@ function TraderPairInfo({ pair }) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+
+        "&:hover  .text": {
+          display: "none",
+        },
+        "&:hover  .icon": {
+          display: "block !important",
+        },
+        cursor: "pointer",
       }}
+      onClick={copy}
+    >
+      <Typography
+        variant="body2"
+        sx={{
+          fontSize: { xs: "10px", sm: "12px" },
+          color: "#C3AD57",
+          ml: "4px",
+        }}
+        className="text"
+      >
+        Pair: {pair}
+      </Typography>
+
+      <div className="icon" style={{ display: "none" }}>
+        {copied ? <IoCheckmarkDoneOutline /> : <FaRegCopy />}
+      </div>
+    </Box>
+  );
+}
+
+function ShowImage({ offer }) {
+  const navigate = useNavigate();
+
+  return (
+    <Box
+      sx={{
+        width: { xs: "150px", sm: "193.12px" },
+        height: "29.83px",
+        backgroundColor: "#000",
+        borderRadius: "3px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        cursor: "pointer",
+      }}
+      onClick={() => navigate(`/tradealerts/${offer.id}`)}
     >
       <Typography
         variant="body2"
@@ -32,7 +87,7 @@ function TraderPairInfo({ pair }) {
           ml: "4px",
         }}
       >
-        Pair: {pair}
+        Show Image
       </Typography>
     </Box>
   );
@@ -41,15 +96,18 @@ function TraderPairInfo({ pair }) {
 // Main component for the trade alert profile
 function TradeAlertProfile() {
   const api = useApi();
-  let navigate = useNavigate();
   const [offers, setOffers] = useState([]);
-  let { baseUrl } = useContext(DarkModeContext);
 
   // Fetch data from the API
   async function tradeAlert() {
-    let res = await api.get(`/offers`);
+    try {
+      let res = await api.get(`/offers`);
+      const data = res.data.all_offers.data;
 
-    setOffers(res?.data?.all_offers?.data);
+      setOffers(data);
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   useEffect(() => {
@@ -75,13 +133,12 @@ function TradeAlertProfile() {
             pt: "30px",
             pb: "15px",
             px: "20px",
-            cursor: "pointer",
-            transition: "transform 0.3s", // إضافة تأثير على hover
-            "&:hover": { transform: "scale(1.02)" }, // تأثير zoom عند التمرير
+            transition: "transform 0.3s",
+            "&:hover": { transform: "scale(1.02)" },
           }}
-          onClick={() => {
-            navigate(`/offers/${offer.id}`);
-          }}
+          // onClick={() => {
+          //   navigate(`/offers/${offer.id}`);
+          // }}
         >
           {/* Trader profile section */}
           <Box sx={{ mx: "auto" }}>
@@ -95,9 +152,9 @@ function TradeAlertProfile() {
             >
               {/* Profile image */}
               <Box
-                sx={{ width: "47px", height: "47px" }}
+                sx={{ width: "47px", height: "47px", borderRadius: "50%" }}
                 component="img"
-                src={profile_img}
+                src={offer.instructor_image}
               />
               <Box
                 sx={{
@@ -132,7 +189,7 @@ function TradeAlertProfile() {
               </Typography>
               <Box component="img" src={checkIcon} />
               <Typography sx={{ fontSize: { xs: "8px", sm: "10px" } }}>
-                3 Mins Ago
+                {offer.offer_creation_date}
               </Typography>
             </Box>
 
@@ -163,7 +220,7 @@ function TradeAlertProfile() {
                   <TraderPairInfo pair={offer.pair} />
                   <TraderPairInfo pair={offer.pair} />
                   <TraderPairInfo pair={offer.pair} />
-                  <TraderPairInfo pair={offer.pair} />
+                  <ShowImage offer={offer} />
                 </Box>
               </Box>
               {/* Trade description */}
@@ -187,6 +244,7 @@ function TradeAlertProfile() {
           </Box>
         </Box>
       ))}
+      <Outlet />
     </Box>
   );
 }

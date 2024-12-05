@@ -26,6 +26,24 @@ function Navbar() {
     { name: "Join us", href: "https://www.hfssociety.com" },
   ];
 
+  const goTo = (e, id) => {
+    if (id.startsWith("#")) {
+      e.preventDefault();
+      const targetElement = document.querySelector(id);
+
+      if (targetElement) {
+        const offsetTop = targetElement.offsetTop;
+        const screenHeight = window.innerHeight;
+        const scrollPosition = offsetTop - screenHeight / 4;
+
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
   const handleToggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
@@ -120,7 +138,11 @@ function Navbar() {
                   },
                 }}
               >
-                <a href={link.href} className="link">
+                <a
+                  href={link.href}
+                  className="link"
+                  onClick={(e) => goTo(e, link.href)}
+                >
                   <Typography
                     variant="body2"
                     sx={{
@@ -219,14 +241,14 @@ function Navbar() {
               key={link.name}
               className="sidebar-link"
               to={link.href}
-              onClick={handleToggle}
+              onClick={(e) => handleToggle(e)}
               style={{
                 color: "#fff",
                 textAlign: "center",
                 position: "relative",
                 width: "80%",
                 margin: "0 auto",
-                trnasition: "400ms all",
+                transition: "400ms all",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",

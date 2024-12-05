@@ -25,6 +25,7 @@ import TradeAlertWithId from "@/Pages/Dashboard/TradeAlertWithId/index.jsx";
 import Categories from "@/Pages/Dashboard/Categories/index.jsx";
 import RecordedSessonsPage from "@/Pages/Dashboard/RecordedSessonsPage/index.jsx";
 import UserRecordedSession from "@/Pages/Dashboard/UserRecordedSession/index.jsx";
+import OpenDialog from "@/pages/Dashboard/TradeAlertProfile/OpenDialog";
 
 // import OnlineSessions from "@/Components/HomeProfile/OnlineSessions";
 
@@ -53,6 +54,12 @@ const router = createBrowserRouter([
       {
         path: "tradealerts",
         element: <TradeAlertProfile />,
+        children: [
+          {
+            path: ":id",
+            element: <OpenDialog />,
+          },
+        ],
       },
       {
         path: "calender",

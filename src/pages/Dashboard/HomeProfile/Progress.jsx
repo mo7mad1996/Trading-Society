@@ -38,11 +38,11 @@ function Progress() {
         alignItems: "center",
       }}
     >
-      <Box sx={{ width: "75%" }}>
+      <Box sx={{ width: "80%" }}>
         <Box>
           <CircularProgressBar />
         </Box>
-        <Box sx={{ my: "50px" }}>
+        {/* <Box sx={{ my: "50px" }}>
           <Box
             sx={{
               display: "flex",
@@ -161,7 +161,7 @@ function Progress() {
               ))
             )}
           </Box>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );

@@ -8,10 +8,9 @@ import useApi from "@/api";
 import { Box, Typography } from "@mui/material";
 import OurCourses from "./OurCourses";
 import { FaStar } from "react-icons/fa";
-import { IoMdTime } from "react-icons/io";
-import { FaPlay } from "react-icons/fa";
 import { HiOutlineXMark } from "react-icons/hi2";
 import BannerProfile from "@/Components/HomeProfile/BannerProfile";
+import VideoController from "@/components/VideoController";
 
 // component
 function AcademyProfile() {
@@ -358,9 +357,9 @@ const WelcomeVideo = ({ url }) => {
   return (
     <h1>
       {isVideo ? (
-        <video controls style={{ width: "100%", maxWidth: "400px" }}>
-          <source src={url} />
-        </video>
+        <div controls style={{ width: "100%", maxWidth: "1400px" }}>
+          <VideoController src={url} />
+        </div>
       ) : (
         <img src={url} style={{ width: "100%", maxWidth: "400px" }} />
       )}

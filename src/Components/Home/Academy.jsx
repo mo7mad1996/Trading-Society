@@ -6,7 +6,7 @@ import vector3 from "../../home_profile_assets/vector_card_3.png";
 import logo from "../../assets/logo.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css/autoplay"; 
+import "swiper/css/autoplay";
 
 import { Autoplay } from "swiper/modules";
 
@@ -37,32 +37,28 @@ function Academy() {
         "Traders' common mistakes",
         "How to copy signals from a chart",
       ],
-      prerequisites: [
-
-      ],
+      prerequisites: [],
       image: vector2,
     },
     {
       level: "Advanced",
       content: [
-       "Trader physiology",
-       "Forex calendar",
-       "Fundamental analysis",
-       "Technical analysis introduction",
-       "Chinese candles",
-       "Candles types",
-       "Candles patterns",
-       "Support and resistance",
-       "Trends",
-       "Time frames",
-       "What indicators means",
-       "Moviog average",
-       "MACD",
-       "RSI",
+        "Trader physiology",
+        "Forex calendar",
+        "Fundamental analysis",
+        "Technical analysis introduction",
+        "Chinese candles",
+        "Candles types",
+        "Candles patterns",
+        "Support and resistance",
+        "Trends",
+        "Time frames",
+        "What indicators means",
+        "Moviog average",
+        "MACD",
+        "RSI",
       ],
-      prerequisites: [
-
-      ],
+      prerequisites: [],
       image: vector3,
     },
     {
@@ -74,22 +70,13 @@ function Academy() {
         "Harmonics",
         "Expert fundamental analysis",
       ],
-      prerequisites: [
-
-      ],
+      prerequisites: [],
       image: vector,
     },
     {
       level: "Master",
-      content: [
-        "SMC",
-        "Sk",
-        "Ict",
-        "Volume profile",
-      ],
-      prerequisites: [
-
-      ],
+      content: ["SMC", "Sk", "Ict", "Volume profile"],
+      prerequisites: [],
       image: vector,
     },
   ]);
@@ -131,17 +118,17 @@ function Academy() {
         modules={[Autoplay]}
       >
         {cards.map((card, index) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} className="full-height">
             <Box
-              className=""
               sx={{
                 width: { xs: "auto", xl: "450px" },
-                height: { xs: "550px", xl: "700px" },
+                // height: { xs: "550px", xl: "700px" },
+                height: "100%",
                 p: "20px",
                 backgroundImage: `url(${card.image})`,
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
-                backgroundSize: "contain",
+                backgroundSize: "100% 100%",
                 position: "relative",
                 display: "flex",
                 flexDirection: "column",
@@ -150,7 +137,6 @@ function Academy() {
             >
               <Box
                 sx={{
-                  height: "200px",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-evenly",
@@ -161,7 +147,7 @@ function Academy() {
                   src={logo}
                   sx={{
                     position: "absolute",
-                    top: {xs:"12%",md:"5%"},
+                    top: { xs: "12%", md: "5%" },
                     left: "50%",
                     transform: "translateX(-50%)",
                     width: "80px",
@@ -179,8 +165,8 @@ function Academy() {
                     },
                     fontFamily: "TanseekModernProArabic",
                     fontWeight: "bold",
-                    ml:'8px',
-                    mt:"30px"
+                    ml: "8px",
+                    // mt:"30px"
                   }}
                 >
                   {card.level}
@@ -208,7 +194,6 @@ function Academy() {
                     display: "flex",
                     flexDirection: "column",
                     gap: "5px",
-
                   }}
                 >
                   {card.content.map((item, index) => (
@@ -232,7 +217,7 @@ function Academy() {
                     </Box>
                   ))}
                 </Box>
-               
+
                 {/* <Button
                   sx={{
                     backgroundColor: "#88783C",

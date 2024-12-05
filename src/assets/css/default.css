@@ -17,7 +17,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 html,
 body {
@@ -32,4 +32,11 @@ body {
 
 a {
   text-decoration: none;
+}
+
+*:has(> .full-height) {
+  align-items: stretch;
+}
+.full-height {
+  height: auto !important;
 }
