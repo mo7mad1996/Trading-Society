@@ -13,7 +13,7 @@ function TradeAlert() {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <Box sx={{  }}>
+      <Box sx={{}}>
         {" "}
         {/* إضافة Padding للمرونة على الشاشات الصغيرة */}
         <Grid2

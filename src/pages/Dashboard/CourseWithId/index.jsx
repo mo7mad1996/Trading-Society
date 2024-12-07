@@ -40,7 +40,6 @@ function CourseWithId() {
       const data = res?.data?.course;
       setCourse(data);
 
-      console.log(data);
     } catch (err) {
       setErr(err?.response?.data?.message || err.message);
       console.error(err);

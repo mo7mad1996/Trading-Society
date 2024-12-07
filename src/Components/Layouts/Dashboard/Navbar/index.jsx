@@ -50,7 +50,8 @@ function Navbar({ user }) {
         WebkitBackdropFilter: "blur(10px)", // Safari support
         height: "80px",
         display: "flex",
-        width: "100%",
+        width: "97%",
+        margin: "auto",
         maxWidth: "100dvw",
         alignItems: "center",
         borderRadius: "15px",

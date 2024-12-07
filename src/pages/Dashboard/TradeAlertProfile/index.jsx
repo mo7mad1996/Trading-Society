@@ -5,39 +5,37 @@ import useApi from "@/api";
 import { Box, Typography } from "@mui/material";
 import { FaRegCopy } from "react-icons/fa6";
 import { IoCheckmarkDoneOutline } from "react-icons/io5";
+import { TbChartCandle } from "react-icons/tb";
 
 // assets
-import profile_img from "@/home_profile_assets/profile_img.png";
+import { MdOutlineCandlestickChart } from "react-icons/md";
 import checkIcon from "@/home_profile_assets/vector_2.png";
 import { Outlet, useNavigate } from "react-router-dom";
 
 // Reusable component for displaying trader's pair information
-function TraderPairInfo({ pair }) {
+function TraderPairInfo({ value, _key }) {
   const [copied, setCopied] = useState(false);
 
   const copy = () => {
+    if (!value) return;
     setCopied(true);
-    navigator.clipboard.writeText(pair);
+    navigator.clipboard.writeText(value);
 
     setTimeout(() => setCopied(false), 1000);
   };
-
   return (
     <Box
       sx={{
         width: { xs: "150px", sm: "193.12px" },
-        height: "29.83px",
         backgroundColor: "#000",
         borderRadius: "3px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
+        padding: "5px 10px",
 
-        "&:hover  .text": {
-          display: "none",
-        },
         "&:hover  .icon": {
-          display: "block !important",
+          opacity: "1 !important",
         },
         cursor: "pointer",
       }}
@@ -52,10 +50,14 @@ function TraderPairInfo({ pair }) {
         }}
         className="text"
       >
-        Pair: {pair}
+        {_key.toUpperCase()}
+        {" : "}
+        <span style={{ color: _key == "order type" ? "#0f49b0" : "inherit" }}>
+          {value}
+        </span>
       </Typography>
 
-      <div className="icon" style={{ display: "none" }}>
+      <div className="icon" style={{ opacity: 0 }}>
         {copied ? <IoCheckmarkDoneOutline /> : <FaRegCopy />}
       </div>
     </Box>
@@ -70,11 +72,11 @@ function ShowImage({ offer }) {
       sx={{
         width: { xs: "150px", sm: "193.12px" },
         height: "29.83px",
-        backgroundColor: "#000",
+        backgroundColor: "#C3AD57",
+        color: "#000",
         borderRadius: "3px",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
         cursor: "pointer",
       }}
       onClick={() => navigate(`/tradealerts/${offer.id}`)}
@@ -83,11 +85,15 @@ function ShowImage({ offer }) {
         variant="body2"
         sx={{
           fontSize: { xs: "10px", sm: "12px" },
-          color: "#C3AD57",
           ml: "4px",
+          display: "flex",
+          gap: "5px",
+          padding: "5px 10px",
+          alignItems: "center",
         }}
       >
-        Show Image
+        <TbChartCandle />
+        <span>VIEW CHART</span>
       </Typography>
     </Box>
   );
@@ -208,38 +214,25 @@ function TradeAlertProfile() {
                 <Box
                   sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
                 >
-                  <TraderPairInfo pair={offer.pair} />
-                  <TraderPairInfo pair={offer.pair} />
-                  <TraderPairInfo pair={offer.pair} />
-                  <TraderPairInfo pair={offer.pair} />
+                  <TraderPairInfo value={offer.pair} _key="pair" />
+                  <TraderPairInfo value={offer.price} _key="price" />
+                  <TraderPairInfo value={offer.tp1} _key="tp1" />
+                  <TraderPairInfo value={offer.tp3} _key="tp3" />
+                  <TraderPairInfo value={offer.tp5} _key="tp5" />
                 </Box>
                 {/* Right column */}
                 <Box
                   sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
                 >
-                  <TraderPairInfo pair={offer.pair} />
-                  <TraderPairInfo pair={offer.pair} />
-                  <TraderPairInfo pair={offer.pair} />
+                  <TraderPairInfo value={offer.order_type} _key="order type" />
+                  <TraderPairInfo value={offer.sl} _key="SL" />
+                  <TraderPairInfo value={offer.tp2} _key="tp2" />
+                  <TraderPairInfo value={offer.tp2} _key="tp5" />
                   <ShowImage offer={offer} />
                 </Box>
               </Box>
               {/* Trade description */}
-              <Box
-                sx={{
-                  backgroundColor: "#000",
-                  width: "100%",
-                  height: { xs: "auto", sm: "75.71px" },
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "#C3AD57",
-                  fontSize: { xs: "10px", sm: "12px" },
-                }}
-              >
-                <Box sx={{ width: "90%", mx: "auto" }}>
-                  {offer.offer_description}
-                </Box>
-              </Box>
+              <TradeDescription text={offer.offer_description} />
             </Box>
           </Box>
         </Box>
@@ -249,4 +242,52 @@ function TradeAlertProfile() {
   );
 }
 
+function TradeDescription({ text }) {
+  const [showMore, setShowMore] = useState(true);
+
+  return (
+    <Box
+      sx={{
+        backgroundColor: "#000",
+        width: "100%",
+        color: "#C3AD57",
+        overflow: "hidden",
+        p: 2,
+        fontSize: { xs: "10px", sm: "12px" },
+        position: "relative",
+      }}
+    >
+      <Box
+        sx={{
+          height: showMore ? "40px" : "auto",
+          maskImage: showMore
+            ? "linear-gradient( black 10px, transparent)"
+            : "none",
+        }}
+      >
+        {text}
+      </Box>
+
+      {showMore && text && (
+        <button
+          onClick={() => setShowMore(false)}
+          style={{
+            position: "absolute",
+            bottom: 10,
+            right: 10,
+            display: "block",
+            width: "max-content",
+            background: "#000000",
+            border: "none",
+            cursor: "pointer",
+            borderBottom: "2px solid #b0b0b0",
+            color: "#b0b0b0",
+          }}
+        >
+          VIEW MORE
+        </button>
+      )}
+    </Box>
+  );
+}
 export default TradeAlertProfile;

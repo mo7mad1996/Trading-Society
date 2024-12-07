@@ -8,17 +8,18 @@ import { motion } from "framer-motion"; // استيراد Framer Motion
 
 function MissionAndVision() {
   return (
-    <Box sx={{ 
-      position: "relative", 
-      overflow: "hidden", 
-      // backgroundColor: "white",
-      mt: "-120px",
-
-      }}>
+    <Box
+      sx={{
+        position: "relative",
+        overflow: "hidden",
+        // backgroundColor: "white",
+        mt: "-120px",
+      }}
+    >
       <Grid2
         container
         display={"flex"}
-        alignContent={'center'}
+        alignContent={"center"}
         justifyContent="center"
         spacing={5}
         sx={{
@@ -31,7 +32,7 @@ function MissionAndVision() {
         <Grid2 size={{ xs: 12, md: 6 }}>
           <Box
             sx={{
-              mb:"-20px",
+              mb: "-20px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -47,10 +48,10 @@ function MissionAndVision() {
                 mb: { xs: "20px", md: "40px" },
               }}
             >
-              <Box sx={{ width: "250px", height: "250px" ,mb:'-33px'}}>
+              <Box sx={{ width: "250px", height: "250px", mb: "-33px" }}>
                 <motion.img
                   src={missionImg}
-                  sx={{ width: "100%", height: "100%" ,mb:'-120px'}}
+                  sx={{ width: "100%", height: "100%", mb: "-120px" }}
                   initial={{ opacity: 0, y: -20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
@@ -82,7 +83,7 @@ function MissionAndVision() {
                       fontSize: "60px",
                       letterSpacing: "15px",
                       lineHeight: "72.27px",
-                      fontWeight:'600',
+                      fontWeight: "600",
                       ml: { xs: "0", md: "-2px" },
                     }}
                   >
@@ -112,17 +113,17 @@ function MissionAndVision() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
             >
-              Our mission at Trading Society is to provide high quality,
-              easy tou nderstand Forex education that empowers traders of all
-              levels. We aim to build a strong, collaborative community where
-              traders can share insights, learn from each other, and grow in a
+              Our mission at Trading Society is to provide high quality, easy
+              tou nderstand Forex education that empowers traders of all levels.
+              We aim to build a strong, collaborative community where traders
+              can share insights, learn from each other, and grow in a
               supportive environment.
             </Typography>
           </Box>
         </Grid2>
 
         {/* Vision Section */}
-        <Grid2 size={{ xs: 12, md: 6 ,}} sx={{mt:'20px'}}>
+        <Grid2 size={{ xs: 12, md: 6 }} sx={{ mt: "20px" }}>
           <Box
             sx={{
               display: "flex",

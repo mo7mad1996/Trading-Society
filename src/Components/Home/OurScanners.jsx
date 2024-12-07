@@ -126,8 +126,8 @@ function OurScanners() {
             mx: "auto",
             display: "flex",
             justifyContent: "center",
-            alignSelf:'center',
-            transform:{xs:"translateX(-30px)",md:""}
+            alignSelf: "center",
+            transform: { xs: "translateX(-30px)", md: "" },
           }}
         >
           <img
@@ -135,10 +135,9 @@ function OurScanners() {
             alt="My Logo"
             style={{
               backgroundSize: "cover",
-              objectFit:'cover',
+              objectFit: "cover",
               width: "100%",
               height: "100%",
-           
             }}
           />
         </Box>

@@ -11,9 +11,9 @@ function OurMobileApp() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      style={{overflow:'hidden'}}
+      style={{ overflow: "hidden" }}
     >
-      <Box sx={{ padding: {  md: "" } }}>
+      <Box sx={{ padding: { md: "" } }}>
         <Box
           sx={{
             display: "flex",
@@ -93,48 +93,54 @@ function OurMobileApp() {
                 <Box
                   sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
                 >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      gap: "10px",
-                      backgroundColor: "#000",
-                      width: "230px",
-                      height: "70px",
-                      borderRadius: "10px",
-                      cursor: "pointer",
-                      transition:'all 700ms',
-                      "&:hover":{
-                        transform:'scale(1.1)'
-                      }
-                    }}
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.trading_society.app&pcampaignid=web_share"
+                    target="_blank"
+                    style={{ width: "100%" }}
                   >
-                    <Box sx={{ width: "50px", height: "50px" ,
-                  
-                    }}>
-                      <Box
-                        component="img"
-                        src={googlePlayIcon}
-                        sx={{
-                          width: "100%",
-                          height: "100%",
-                          backgroundSize: "contain",
-                       
-                        
-                        }}
-                      />
-                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: "10px",
+                        backgroundColor: "#000",
+                        width: "230px",
+                        height: "70px",
+                        borderRadius: "10px",
+                        cursor: "pointer",
+                        transition: "all 700ms",
+                        "&:hover": {
+                          transform: "scale(1.1)",
+                        },
+                      }}
+                    >
+                      <Box sx={{ width: "50px", height: "50px" }}>
+                        <Box
+                          component="img"
+                          src={googlePlayIcon}
+                          sx={{
+                            width: "100%",
+                            height: "100%",
+                            backgroundSize: "contain",
+                          }}
+                        />
+                      </Box>
 
-                    <Box sx={{ color: "#fff" }}>
-                      <Typography sx={{ fontSize: "22px", lineHeight: "0.7" }}>
-                        GET IT ON
-                      </Typography>
-                      <Typography sx={{ fontSize: "30px", lineHeight: "0.7" }}>
-                        Google Play
-                      </Typography>
+                      <Box sx={{ color: "#fff" }}>
+                        <Typography
+                          sx={{ fontSize: "22px", lineHeight: "0.7" }}
+                        >
+                          GET IT ON
+                        </Typography>
+                        <Typography
+                          sx={{ fontSize: "30px", lineHeight: "0.7" }}
+                        >
+                          Google Play
+                        </Typography>
+                      </Box>
                     </Box>
-                  </Box>
+                  </a>
                   <Box
                     sx={{
                       display: "flex",
@@ -146,11 +152,11 @@ function OurMobileApp() {
                       height: "70px",
                       borderRadius: "10px",
                       cursor: "pointer",
-                      transition:'all 1s',
-                 
-                      "&:hover":{
-                        transform:'scale(1.1)'
-                      }
+                      transition: "all 1s",
+
+                      "&:hover": {
+                        transform: "scale(1.1)",
+                      },
                     }}
                   >
                     <FaApple style={{ fontSize: "45px", color: "#fff" }} />
@@ -174,8 +180,7 @@ function OurMobileApp() {
             initial={{ x: 200, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.4 }}
-            style={{
-            }}
+            style={{}}
           >
             <Box
               sx={{

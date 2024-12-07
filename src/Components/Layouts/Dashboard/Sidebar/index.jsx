@@ -135,7 +135,7 @@ function Sidebar() {
   ]);
 
   const scannersItems = [
-    { name: "Chart", path: "/scanners/1" },
+    { name: "Chart", path: "/chart" },
     { name: "Gang", path: "/scanners/1" },
     { name: "Gang pro", path: "/scanners/4" },
     { name: "Rubber band", path: "/scanners/2" },

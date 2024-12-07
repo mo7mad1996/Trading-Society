@@ -1,9 +1,9 @@
 import { Box, Divider, Grid2, Typography } from "@mui/material";
-import imgBg from "../../home_profile_assets/user_infoBG.jpg";
+import imgBg from "@/home_profile_assets/user_infoBG.jpg";
 import { useContext, useState } from "react";
-import googlePlay from "../../home_profile_assets/googleplay.png";
-import packageCard from "../../home_profile_assets/350-500-344.png";
-import appstore from "../../home_profile_assets/appstore.png";
+import googlePlay from "@/home_profile_assets/googleplay.png";
+import packageCard from "@/home_profile_assets/350-500-344.png";
+import appstore from "@/home_profile_assets/appstore.png";
 import { TokenContext } from "@/context";
 
 function Cards() {
@@ -179,21 +179,27 @@ function Cards() {
             Download Our App
           </Typography>
           <Box sx={{ mt: "50px", textAlign: "center" }}>
-            <Box
-              component="img"
-              src={googlePlay}
-              sx={{
-                width: "230px",
-                mb: 2,
-                cursor: "pointer",
-                transition:
-                  "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out", // Animation on hover
-                "&:hover": {
-                  transform: "scale(1.1)", // Slightly enlarges the element
-                  boxShadow: 0, // Increases shadow depth on hover
-                },
-              }}
-            />
+            <a
+              href="https://play.google.com/store/apps/details?id=com.trading_society.app&pcampaignid=web_share"
+              target="_blank"
+              style={{ width: "100%" }}
+            >
+              <Box
+                component="img"
+                src={googlePlay}
+                sx={{
+                  width: "230px",
+                  mb: 2,
+                  cursor: "pointer",
+                  transition:
+                    "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out", // Animation on hover
+                  "&:hover": {
+                    transform: "scale(1.1)", // Slightly enlarges the element
+                    boxShadow: 0, // Increases shadow depth on hover
+                  },
+                }}
+              />
+            </a>
             <Divider
               sx={{
                 backgroundColor: "#ECBC56",

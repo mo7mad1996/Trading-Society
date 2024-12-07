@@ -26,7 +26,6 @@ function OnlineSessionCard() {
       const res = await api.get("/live-sessions");
       const data = res.data.data;
 
-      console.log(data);
       setUserData(data);
     } catch (err) {
     } finally {

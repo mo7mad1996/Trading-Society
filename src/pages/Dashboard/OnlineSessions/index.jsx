@@ -30,8 +30,6 @@ const OnlineSession = () => {
           },
         }
       );
-      // Log the full response for debugging
-      console.log(response.data);
 
       if (response.data.status) {
         setMeetingURL(response.data.data.url);

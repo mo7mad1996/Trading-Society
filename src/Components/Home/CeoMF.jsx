@@ -144,11 +144,8 @@ function CeoMF() {
                 />
               </Box>
 
-
-            <Typography>
-             Trading Society , CEO
-            </Typography>
-              </Box>
+              <Typography>Trading Society , CEO</Typography>
+            </Box>
           </Box>
         </motion.div>
       </Box>

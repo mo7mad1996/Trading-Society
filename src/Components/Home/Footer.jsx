@@ -81,7 +81,7 @@ function Footer() {
       alert("Email sent and data stored successfully!");
       handleClose();
     } catch (error) {
-      console.log("Error:", error);
+      console.error("Error:", error);
       alert("Failed to send email or store data.");
     }
   };

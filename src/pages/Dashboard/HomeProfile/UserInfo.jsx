@@ -40,7 +40,7 @@ const UserInfo = () => {
       { label: "Subscription", value: "unselected" },
       { label: "Phone Number", value: user.phone },
       {
-        label: "ٍStart Date",
+        label: "Start Date",
         value: "unselected",
       },
       { label: "Expiratiion Date", value: "unselected" },
@@ -181,20 +181,27 @@ const UserInfo = () => {
             justifyContent: "center",
           }}
         >
-          <Box
-            component="img"
-            src={googlePlay}
-            sx={{
-              width: "100%",
-              maxWidth: "320px",
-              cursor: "pointer",
-              transition:
-                "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out", // Animation on hover
-              "&:hover": {
-                boxShadow: 0, // Increases shadow depth on hover
-              },
-            }}
-          />
+          <a
+            href="https://play.google.com/store/apps/details?id=com.trading_society.app&pcampaignid=web_share"
+            target="_blank"
+            style={{ width: "100%" }}
+          >
+            <Box
+              component="img"
+              src={googlePlay}
+              sx={{
+                width: "100%",
+                maxWidth: "320px",
+                cursor: "pointer",
+                transition:
+                  "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out", // Animation on hover
+                "&:hover": {
+                  boxShadow: 0, // Increases shadow depth on hover
+                },
+              }}
+            />
+          </a>
+
           <Divider
             sx={{
               backgroundColor: "#ECBC56",

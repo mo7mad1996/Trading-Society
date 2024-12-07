@@ -27,7 +27,6 @@ const UserRecordedSession = () => {
 
       const data = res.data.data;
 
-      console.log(data);
       setData(data);
     } catch (err) {
       console.error(err);

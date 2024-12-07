@@ -23,7 +23,6 @@ function TradeAlertWithId() {
       let res = await api.get(`/offers/${id}`);
       const data = res.data.offer;
 
-      console.log(data);
       setOffer(data);
     } catch (err) {
       console.error(err);

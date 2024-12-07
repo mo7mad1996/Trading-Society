@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import signature2 from "../assets/signature2.png";
-import person2 from "../assets/Hamed-COO_HOME-PAGE2.webp"
+import person2 from "../assets/Hamed-COO_HOME-PAGE2.webp";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -28,8 +28,6 @@ function CeoMH() {
         gap: "10px",
         p: { xs: 2, lg: 0 },
         // overflowY: "hidden",
-       
-
       }}
       ref={sectionRef}
     >
@@ -40,8 +38,7 @@ function CeoMH() {
           mb: { xs: 2, lg: 0 },
           transform: { xs: "translateY(0)", lg: "translateY(150px)" },
           pl: "50px",
-          overflow:"hidden"
-          
+          overflow: "hidden",
         }}
       >
         <motion.div
@@ -56,17 +53,17 @@ function CeoMH() {
           }}
         >
           <Typography
-                component="h3"
-                variant="body2"
-                sx={{
-                  fontSize: { xs: "24px", sm: "30px", md: "35px", lg: "30px" },
-                  letterSpacing: "0.5px",
-                  my: { xs: "0px", lg: "20px" },
-                  color: "text.primary",
-                }}
-              >
-                 COO Message <br /> for Trading Society
-              </Typography>
+            component="h3"
+            variant="body2"
+            sx={{
+              fontSize: { xs: "24px", sm: "30px", md: "35px", lg: "30px" },
+              letterSpacing: "0.5px",
+              my: { xs: "0px", lg: "20px" },
+              color: "text.primary",
+            }}
+          >
+            COO Message <br /> for Trading Society
+          </Typography>
         </motion.div>
 
         <motion.div
@@ -81,8 +78,6 @@ function CeoMH() {
               fontSize: { xs: "14px", sm: "16px", md: "20px", lg: "25px" },
               letterSpacing: "2%",
               lineHeight: "1.5",
-            
-             
             }}
           >
             <Typography>
@@ -112,14 +107,8 @@ function CeoMH() {
                 justifyContent: "center",
                 mt: "20px",
                 ml: "auto",
-               
-            
               }}
-            >
-
-          
-             
-            </Box>
+            ></Box>
             <Box>
               <Box
                 sx={{
@@ -147,12 +136,8 @@ function CeoMH() {
                 />
               </Box>
 
-
-            <Typography>
-            Trading Society , COO
-            </Typography>
-              </Box>
-          
+              <Typography>Trading Society , COO</Typography>
+            </Box>
           </Box>
         </motion.div>
       </Box>
@@ -169,22 +154,21 @@ function CeoMH() {
             // position:'relative'
           }}
         >
-<motion.div
-  style={{
-    backgroundImage: `url(${person2})`,
-    backgroundAttachment: "fixed",
-    width: "95%",
-    height: "100%",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "right bottom", // Start from the bottom-right corner
-    overflow: "hidden",
-    backgroundSize: "contain",
-    
-  }}
-  initial={{ y: 5 }}
-  animate={{ y: `${Math.min(Math.max(offsetY - 50, -5), 100)}px` }} // Animation limits
-  transition={{ ease: "linear", duration: 0.5 }}
-></motion.div>
+          <motion.div
+            style={{
+              backgroundImage: `url(${person2})`,
+              backgroundAttachment: "fixed",
+              width: "95%",
+              height: "100%",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "right bottom", // Start from the bottom-right corner
+              overflow: "hidden",
+              backgroundSize: "contain",
+            }}
+            initial={{ y: 5 }}
+            animate={{ y: `${Math.min(Math.max(offsetY - 50, -5), 100)}px` }} // Animation limits
+            transition={{ ease: "linear", duration: 0.5 }}
+          ></motion.div>
         </Box>
       </Box>
     </Box>

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import debounce from "lodash.debounce";
 
 // component
 import ReactPlayer from "react-player";
@@ -42,17 +43,30 @@ const CustomVideoPlayer = ({ src, poster }) => {
     setCurrentTime(newTime);
   };
 
+  const handlePlaybackRateChange = debounce((e) => {
+    const newRate = parseFloat(e.target.value);
+    
+    if (newRate !== playbackRate) {
+      setPlaybackRate(newRate);
+      const internalPlayer = playerRef.current?.getInternalPlayer();
+      if (internalPlayer) {
+        internalPlayer.setPlaybackRate(newRate);
+      }
+    }
+  }, 300);
+  
   const handleVolumeChange = (e) => {
-    const newVolume = e.target.value;
-    setVolume(newVolume);
-    playerRef.current?.getInternalPlayer()?.setVolume(newVolume);
+    const newVolume = parseFloat(e.target.value);
+  
+    if (newVolume !== volume) {
+      setVolume(newVolume);
+      const internalPlayer = playerRef.current?.getInternalPlayer();
+      if (internalPlayer && typeof internalPlayer.setVolume === "function") {
+        internalPlayer.setVolume(newVolume);
+      }
+    }
   };
-
-  const handlePlaybackRateChange = (e) => {
-    const newRate = e.target.value;
-    setPlaybackRate(newRate);
-    playerRef.current?.getInternalPlayer()?.setPlaybackRate(newRate);
-  };
+  
 
   const toggleFullscreen = () => {
     if (isFullscreen) {
@@ -80,7 +94,7 @@ const CustomVideoPlayer = ({ src, poster }) => {
     <div className={css.video_container} ref={video_controller}>
       {poster && !isPlaying ? (
         <img
-          src="your-poster-image-url.jpg" // Replace with your poster image URL
+          src={poster}
           alt="Poster"
           className={css.poster}
           onClick={() => setIsPlaying(true)} // Show video when the poster is clicked
@@ -96,7 +110,7 @@ const CustomVideoPlayer = ({ src, poster }) => {
           onProgress={handleProgress}
           onDuration={handleDuration}
           muted={isMuted}
-          volume={volume}
+          volume={parseFloat(volume)}
           playbackRate={playbackRate}
         />
       )}
@@ -128,7 +142,7 @@ const CustomVideoPlayer = ({ src, poster }) => {
         <label className={css.slider1}>
           <input
             type="range"
-            className={css.level}
+            className={css.level1}
             min="0"
             max="1"
             value={volume}
@@ -137,7 +151,11 @@ const CustomVideoPlayer = ({ src, poster }) => {
           />
         </label>
 
-        <select onChange={handlePlaybackRateChange} value={playbackRate}>
+        <select
+          onChange={handlePlaybackRateChange}
+          value={playbackRate}
+          name="playbackRate"
+        >
           <option value="0.5">0.5x</option>
           <option value="1">1x</option>
           <option value="1.5">1.5x</option>
