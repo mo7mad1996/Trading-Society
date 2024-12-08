@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import debounce from "lodash.debounce";
 
 // component
@@ -18,7 +18,7 @@ const CustomVideoPlayer = ({ src, poster }) => {
   const video_controller = useRef(null); // HTML ref
   const playerRef = useRef(null); // HTML ref
 
-  // dta
+  // data
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -45,7 +45,7 @@ const CustomVideoPlayer = ({ src, poster }) => {
 
   const handlePlaybackRateChange = debounce((e) => {
     const newRate = parseFloat(e.target.value);
-    
+
     if (newRate !== playbackRate) {
       setPlaybackRate(newRate);
       const internalPlayer = playerRef.current?.getInternalPlayer();
@@ -54,10 +54,10 @@ const CustomVideoPlayer = ({ src, poster }) => {
       }
     }
   }, 300);
-  
+
   const handleVolumeChange = (e) => {
     const newVolume = parseFloat(e.target.value);
-  
+
     if (newVolume !== volume) {
       setVolume(newVolume);
       const internalPlayer = playerRef.current?.getInternalPlayer();
@@ -66,7 +66,6 @@ const CustomVideoPlayer = ({ src, poster }) => {
       }
     }
   };
-  
 
   const toggleFullscreen = () => {
     if (isFullscreen) {
@@ -88,6 +87,9 @@ const CustomVideoPlayer = ({ src, poster }) => {
     setIsMuted((prev) => !prev);
     playerRef.current?.getInternalPlayer()?.setMuted(!isMuted);
   };
+  useEffect(() => {
+    sessionStorage.clear();
+  }, []);
 
   // render
   return (

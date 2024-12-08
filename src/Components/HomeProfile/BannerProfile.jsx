@@ -6,7 +6,7 @@ function BannerProfile() {
   return (
     <a
       href="https://banner-api.hfm.com/link/4a9ff55e?regulator=HFSV&refid=30432124"
-      target="_top"
+      target="_blank"
       style={{ display: "block" }}
     >
       <img style={{ display: "block", width: "100%" }} src={profileBanner} />

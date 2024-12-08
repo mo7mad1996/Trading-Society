@@ -101,3 +101,7 @@
 
   background-color: #ecbc56;
 }
+
+.Mui-selected {
+  color: #ecbc56 !important;
+}

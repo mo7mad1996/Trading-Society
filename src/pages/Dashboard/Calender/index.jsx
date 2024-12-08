@@ -100,7 +100,7 @@ const Calendar = () => {
       <Box
         sx={{
           textAlign: "center",
-          padding: "20px",
+          // padding: "20px",
           display: "flex",
           flexDirection: "column",
         }}
@@ -120,7 +120,7 @@ const Calendar = () => {
               color: "#856A30",
               width: "33px",
               height: "47px",
-              fontSize: "30px",
+              fontSize: { xs: "14px", md: "30px" },
             }}
           />
           <Box>
@@ -188,7 +188,7 @@ const Calendar = () => {
                     color: "#C3AD57",
                     fontFamily: "Motken noqta ii",
                     textAlign: "center",
-                    fontSize: { xs: "12px", md: "14px" },
+                    fontSize: { xs: "10px", md: "14px" },
                   }}
                 >
                   {day}
@@ -215,6 +215,7 @@ const Calendar = () => {
                     (index + 1) % 7 === 0 ? "none" : "1px solid #856A30", // Remove border-right for the last column
                   borderBottom: isLastRow ? "none" : "1px solid #856A30", // Remove border-bottom for the last row
                   height: { xs: "60px", md: "100px" },
+
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -253,7 +254,7 @@ const Calendar = () => {
                           .format("YYYY-MM-DD")
                       ]
                         ? "20px"
-                        : "30px",
+                        : { xs: "12px", md: "30px" },
                       position: events[
                         dayjs(currentMonth)
                           .date(dayIndex + 1)

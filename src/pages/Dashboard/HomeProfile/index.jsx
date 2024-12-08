@@ -10,11 +10,11 @@ function HomeProfile() {
       <Box>
         <BannerProfile />
         <UserInfo />
-        <Box sx={{ my: { xs: "20px", md: "30px" } }}>
+        {/* <Box sx={{ my: { xs: "20px", md: "30px" } }}>
           <Progress />
-        </Box>
+        </Box> */}
+        <EducatorsCard />
       </Box>
-      <EducatorsCard />
     </>
   );
 }

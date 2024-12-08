@@ -26,7 +26,6 @@ function TraderPairInfo({ value, _key }) {
   return (
     <Box
       sx={{
-        width: { xs: "150px", sm: "193.12px" },
         backgroundColor: "#000",
         borderRadius: "3px",
         display: "flex",
@@ -70,7 +69,6 @@ function ShowImage({ offer }) {
   return (
     <Box
       sx={{
-        width: { xs: "150px", sm: "193.12px" },
         height: "29.83px",
         backgroundColor: "#C3AD57",
         color: "#000",
@@ -127,6 +125,7 @@ function TradeAlertProfile() {
         flexWrap: "wrap",
         gap: "10px",
         justifyContent: "center",
+        pb: 6,
       }}
     >
       {offers.map((offer, index) => (
@@ -209,10 +208,20 @@ function TradeAlertProfile() {
               }}
             >
               {/* Two columns for pairs */}
-              <Box sx={{ display: "flex", gap: { xs: "20px", sm: "10px" } }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  gap: { xs: "20px", sm: "10px" },
+                }}
+              >
                 {/* Left column */}
                 <Box
-                  sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                    flex: 1,
+                  }}
                 >
                   <TraderPairInfo value={offer.pair} _key="pair" />
                   <TraderPairInfo value={offer.price} _key="price" />
@@ -222,7 +231,12 @@ function TradeAlertProfile() {
                 </Box>
                 {/* Right column */}
                 <Box
-                  sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                    flex: 1,
+                  }}
                 >
                   <TraderPairInfo value={offer.order_type} _key="order type" />
                   <TraderPairInfo value={offer.sl} _key="SL" />

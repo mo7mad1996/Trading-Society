@@ -37,13 +37,13 @@ const UserInfo = () => {
         value: `${user.user_first_name} ${user.user_last_name}`,
       },
       { label: "E-mail", value: user.user_email },
-      { label: "Subscription", value: "unselected" },
+      { label: "Subscription", value: "---" },
       { label: "Phone Number", value: user.phone },
       {
         label: "Start Date",
-        value: "unselected",
+        value: "---",
       },
-      { label: "Expiratiion Date", value: "unselected" },
+      { label: "Expiratiion Date", value: "---" },
     ]);
   };
 
@@ -57,7 +57,13 @@ const UserInfo = () => {
     <Box
       sx={{
         display: "flex",
-        flexDirection: { lg: "row", xs: "column" },
+        flexDirection: {
+          lg: "row",
+          xs: "column",
+        },
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
         gap: 2,
         width: "100%",
         alignItems: "stretch",
@@ -74,7 +80,8 @@ const UserInfo = () => {
           flex: 1,
           width: "100%",
           display: "flex",
-          p: 5,
+          p: { md: 5, sm: 3, xs: 2 },
+          FontSize: { md: 5, sm: 3, xs: 1 },
           flexDirection: "column",
           alignItems: "left",
           justifyContent: "center",
@@ -98,8 +105,8 @@ const UserInfo = () => {
             src={user?.profile_image}
             alt={user?.user_first_name}
             sx={{
-              width: "100px",
-              height: "100px",
+              width: { md: "100px", sm: "70px", xs: "60px" },
+              height: { md: "100px", sm: "70px", xs: "60px" },
               borderRadius: "50%",
               backgroundColor: "#fff",
             }}
@@ -109,6 +116,8 @@ const UserInfo = () => {
               sx={{
                 color: "#fff",
                 fontSize: "35px",
+                fontSize: { md: "35px", sm: "27px", xs: "20px" },
+                mb: ".5em",
                 fontWeight: "bold",
                 textTransform: "capitalize",
               }}
@@ -150,7 +159,8 @@ const UserInfo = () => {
         sx={{
           flex: 1,
           width: "100%",
-          p: 5,
+          p: { md: 5, sm: 3, xs: 1 },
+
           borderRadius: "15px",
           backgroundColor: "#2B2B2B",
         }}
@@ -184,14 +194,13 @@ const UserInfo = () => {
           <a
             href="https://play.google.com/store/apps/details?id=com.trading_society.app&pcampaignid=web_share"
             target="_blank"
-            style={{ width: "100%" }}
+            style={{ width: "100%", maxWidth: "320px" }}
           >
             <Box
               component="img"
               src={googlePlay}
               sx={{
                 width: "100%",
-                maxWidth: "320px",
                 cursor: "pointer",
                 transition:
                   "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out", // Animation on hover
@@ -209,20 +218,26 @@ const UserInfo = () => {
               height: { md: "80px", xs: "1px" },
             }}
           />
-          <Box
-            component="img"
-            src={appstore}
-            sx={{
-              width: "100%",
-              maxWidth: "320px",
-              cursor: "pointer",
-              transition:
-                "transform 0.3s ease-in-out, drop-shadow 0.3s ease-in-out", // Animation on hover
-              "&:hover": {
-                boxShadow: 0, // Increases shadow depth on hover
-              },
-            }}
-          />
+          <a
+            href=""
+            target="_blank"
+            style={{ width: "100%", maxWidth: "320px" }}
+          >
+            <Box
+              component="img"
+              src={appstore}
+              sx={{
+                width: "100%",
+                maxWidth: "320px",
+                cursor: "pointer",
+                transition:
+                  "transform 0.3s ease-in-out, drop-shadow 0.3s ease-in-out", // Animation on hover
+                "&:hover": {
+                  boxShadow: 0, // Increases shadow depth on hover
+                },
+              }}
+            />
+          </a>
         </Box>
       </Box>
     </Box>

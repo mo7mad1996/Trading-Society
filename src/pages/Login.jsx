@@ -7,9 +7,20 @@ import useApi from "@/api";
 import { TokenContext } from "@/context";
 
 // components
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import LoginWithHFS from "@/Pages/LoginWithHFS/index.jsx";
+import { FaLockOpen, FaLock } from "react-icons/fa";
 
 // assets
 import registerLogo from "@/assets/register_img.png";
@@ -24,8 +35,10 @@ function Login() {
   // data
   let [err, setErr] = useState(false);
   let [openHFS, setOpenHFS] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   // methods
+  const togglePassword = () => setShowPassword(!showPassword);
   async function signIn(values) {
     try {
       let res = await api.post("/login", values);
@@ -139,23 +152,31 @@ function Login() {
             }}
           >
             <Box>
-              <TextField
-                fullWidth
-                variant="outlined"
+              <FormControl
                 sx={{ backgroundColor: "#2B2B2B", borderRadius: "10px" }}
-                placeholder="E-mail"
-                value={formik.values.email}
-                name="email"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                slotProps={{
-                  input: {
-                    style: {
-                      color: "#fff",
+                variant="outlined"
+                fullWidth
+              >
+                <InputLabel htmlFor="outlined-adornment-password">
+                  Email
+                </InputLabel>
+                <OutlinedInput
+                  fullWidth
+                  placeholder="E-mail"
+                  slotProps={{
+                    input: {
+                      style: {
+                        color: "#fff",
+                      },
                     },
-                  },
-                }}
-              />
+                  }}
+                  value={formik.values.email}
+                  name="email"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  label="Email"
+                />
+              </FormControl>
               {formik.errors.email && formik.touched.email && (
                 <Box
                   sx={{
@@ -173,26 +194,43 @@ function Login() {
                 </Box>
               )}
             </Box>
-            <Box>
-              <TextField
-                fullWidth
-                variant="outlined"
-                sx={{ backgroundColor: "#2B2B2B", borderRadius: "10px" }}
-                placeholder="Password"
-                value={formik.values.password}
-                type="password"
-                name="password"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                slotProps={{
-                  input: {
-                    style: {
-                      color: "#fff",
-                    },
-                  },
-                }}
-              />
 
+            <Box>
+              <FormControl
+                sx={{ backgroundColor: "#2B2B2B", borderRadius: "10px" }}
+                variant="outlined"
+                fullWidth
+              >
+                <InputLabel htmlFor="outlined-adornment-password">
+                  Password
+                </InputLabel>
+                <OutlinedInput
+                  name="password"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  fullWidth
+                  placeholder="Password"
+                  value={formik.values.password}
+                  type={showPassword ? "text" : "password"}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        sx={{ color: "#e3e3e3" }}
+                        aria-label={
+                          showPassword
+                            ? "hide the password"
+                            : "display the password"
+                        }
+                        onClick={togglePassword}
+                        edge="end"
+                      >
+                        {showPassword ? <FaLockOpen /> : <FaLock />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  label="Password"
+                />
+              </FormControl>
               {formik.errors.password && formik.touched.password && (
                 <Box
                   sx={{

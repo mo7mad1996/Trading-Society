@@ -24,7 +24,8 @@ function Navbar({ user }) {
     if (window.scrollY > 50) setNavBackground("rgba(0, 0, 0, 0.8)");
     else setNavBackground("rgba(0, 0, 0, 1)");
   };
-  const sidebarToggle = () => {
+  const sidebarToggle = (e) => {
+    // if (window.innerWidth < 700 && sidebarOpen) return;
     setSidebarOpen(!sidebarOpen);
   };
 

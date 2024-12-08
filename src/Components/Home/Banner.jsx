@@ -23,10 +23,9 @@ function Banner() {
   return (
     <Box sx={{ mt: "200px", mb: "50px" }}>
       <iframe
-        style={{ width: "100%", aspectRatio: "16 / 9" }}
-        src="https://www.youtube.com/embed/twVE2MtYEm8"
+        style={{ width: "100%", aspectRatio: "16 / 9", border: "none" }}
+        src="https://www.youtube.com/embed/twVE2MtYEm8?controls=0&autoplay=1&loop=1&mute=1"
         title="TRADING SOCIETY"
-        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen

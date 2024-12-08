@@ -4,8 +4,9 @@ import VideoController from "@/components/VideoController";
 const CustomVideoPlayer = () => {
   let { videoUrl } = useParams();
   let decodedUrl = decodeURIComponent(videoUrl);
+  const videoUrlWithCacheBypass = `${decodedUrl}?cache_bypass=${new Date().getTime()}`;
 
-  return <VideoController src={decodedUrl} />;
+  return <VideoController src={videoUrlWithCacheBypass} />;
 };
 
 export default CustomVideoPlayer;

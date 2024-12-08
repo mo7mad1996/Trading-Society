@@ -51,7 +51,7 @@ function Sidebar() {
   // Adjust sidebar visibility on resize
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 700) {
+      if (window.innerWidth <= 900) {
         setSidebarOpen(false);
       } else {
         setSidebarOpen(true);
@@ -70,7 +70,7 @@ function Sidebar() {
       if (
         sidebarRef.current &&
         !sidebarRef.current.contains(event.target) &&
-        window.innerWidth <= 700
+        window.innerWidth <= 900
       ) {
         setSidebarOpen(false);
       }
@@ -143,14 +143,22 @@ function Sidebar() {
   ];
 
   return (
-    <>
+    <Box
+      sx={{
+        position: { md: "sticky", xs: "fixed" },
+        inset: 0,
+        boxSizing: "border-box",
+        p: "8px",
+        zIndex: 99999,
+        width: sidebarOpen ? "auto" : "0",
+        background: "#0003",
+        backdropFilter: sidebarOpen ? "blur(10px)" : "blur(0px)",
+        transition: "width 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out", // Smooth transition effect
+      }}
+    >
       <Box
         ref={sidebarRef}
         sx={{
-          position: "sticky", // Make sidebar fixed to the viewport
-          top: 8, // Position at the top of the screen
-          left: 8, // Position at the left of the screen
-          zIndex: 99999, // Ensure it's above other content
           width: sidebarOpen ? "260px" : "0", // Control width based on whether sidebar is open
           height: "calc(100dvh - 16px)", // Full height of the viewport
           backgroundColor: "black", // Set background color
@@ -218,7 +226,7 @@ function Sidebar() {
         setScannersOpen={setScannersOpen}
         scannersOpen={scannersOpen}
       />
-    </>
+    </Box>
   );
 }
 

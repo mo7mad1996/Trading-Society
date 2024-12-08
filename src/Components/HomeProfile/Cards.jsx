@@ -182,7 +182,7 @@ function Cards() {
             <a
               href="https://play.google.com/store/apps/details?id=com.trading_society.app&pcampaignid=web_share"
               target="_blank"
-              style={{ width: "100%" }}
+              style={{ width: "230px" }}
             >
               <Box
                 component="img"
@@ -208,21 +208,23 @@ function Cards() {
                 margin: "12px auto",
               }}
             />
-            <Box
-              component="img"
-              src={appstore}
-              sx={{
-                width: "230px",
-                mt: 2,
-                cursor: "pointer",
-                transition:
-                  "transform 0.3s ease-in-out, drop-shadow 0.3s ease-in-out", // Animation on hover
-                "&:hover": {
-                  transform: "scale(1.1)", // Slightly enlarges the element
-                  boxShadow: 0, // Increases shadow depth on hover
-                },
-              }}
-            />
+            <a href="" target="_blank" style={{ width: "230px" }}>
+              <Box
+                component="img"
+                src={appstore}
+                sx={{
+                  width: "230px",
+                  mt: 2,
+                  cursor: "pointer",
+                  transition:
+                    "transform 0.3s ease-in-out, drop-shadow 0.3s ease-in-out", // Animation on hover
+                  "&:hover": {
+                    transform: "scale(1.1)", // Slightly enlarges the element
+                    boxShadow: 0, // Increases shadow depth on hover
+                  },
+                }}
+              />
+            </a>
           </Box>
         </Grid2>
 

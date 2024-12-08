@@ -24,7 +24,7 @@ function OnlineSessionCard() {
     try {
       setLoading(true);
       const res = await api.get("/live-sessions");
-      const data = res.data.data;
+      const data = res.data.instructors.data;
 
       setUserData(data);
     } catch (err) {
@@ -45,6 +45,7 @@ function OnlineSessionCard() {
         display: "flex",
         gap: 3,
         flexWrap: "wrap",
+        alignItems: "stretch",
         justifyContent: "center",
         width: "100%",
       }}
@@ -54,7 +55,8 @@ function OnlineSessionCard() {
           key={user.id}
           onClick={() => navigate(`/RecordedSessons/${user.id}`)} // Redirect on click
           sx={{
-            width: "30%",
+            width: { lg: "30%", md: "40%", sm: "80%", xs: "100%" },
+
             borderRadius: "15px",
             "&:hover": {
               cursor: "pointer",
@@ -72,6 +74,9 @@ function OnlineSessionCard() {
               boxShadow: 3,
               borderRadius: "15px",
               backgroundColor: "#2B2B2B",
+              height: "100%",
+              p: 2,
+
               overflow: "hidden", // Prevent image overflow
             }}
           >
@@ -87,8 +92,8 @@ function OnlineSessionCard() {
               <CardMedia
                 component="img"
                 height="140"
-                image={user.image}
-                alt={user.instructor?.name}
+                image={user.photo}
+                alt={user.name}
                 sx={{
                   width: "95%",
                   height: "95%",
@@ -98,15 +103,17 @@ function OnlineSessionCard() {
               />
             </Box>
             <CardContent sx={{ textAlign: "left" }}>
+              {/* 
               <Typography
                 variant="h6"
                 component="div"
                 sx={{ fontWeight: "bold", mb: 2 }}
               >
-                {user.title}
+                {user.title} 
               </Typography>
+                */}
               <Typography variant="h6" component="div" sx={{ mb: 2 }}>
-                {user.instructor?.name}
+                {user.name}
               </Typography>
               <Typography variant="body6" color="text.secondary" sx={{ mb: 2 }}>
                 {user.description}

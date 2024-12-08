@@ -6,6 +6,8 @@ import { IoIosRadio } from "react-icons/io";
 import Scanners_img2 from "@/home_profile_assets/scannersPic.svg";
 import { Link, useNavigate } from "react-router-dom";
 
+import TA from "@/home_profile_assets/BuyAndSell..svg";
+
 const BottomNavbar = () => {
   const scannersItems = [
     { name: "Gang", path: "/scanners/1" },
@@ -25,7 +27,7 @@ const BottomNavbar = () => {
         bottom: 0,
         left: 0,
         right: 0,
-        backgroundColor: "#191919",
+        backgroundColor: "#000",
         padding: "10px 0",
         boxShadow: "0 -2px 10px rgba(0, 0, 0, 0.3)",
         display: { xs: "flex", md: "none" },
@@ -40,7 +42,7 @@ const BottomNavbar = () => {
         sx={{
           display: "flex",
           justifyContent: "space-around",
-          backgroundColor: "#191919",
+          backgroundColor: "inherit",
           color: "#fff",
         }}
       >
@@ -57,7 +59,6 @@ const BottomNavbar = () => {
               left: "50%",
               width: value === 0 ? "40px" : "0",
               height: value === 0 ? "40px" : "0",
-              backgroundColor: "#66FCF1",
               borderRadius: "50%",
               transform: "translate(-50%, -50%)",
               transition: "all 0.3s ease-in-out",
@@ -72,7 +73,7 @@ const BottomNavbar = () => {
           sx={{
             position: "relative",
             color: "#fff",
-            "&:hover": { color: "#ecbc56" },
+            "&:hover": { color: "#ff0000" },
             "&::before": {
               content: '""',
               position: "absolute",
@@ -88,6 +89,34 @@ const BottomNavbar = () => {
             },
           }}
           onClick={() => navigate("/academy")}
+        />
+        <BottomNavigationAction
+          icon={
+            <img
+              src={TA}
+              alt="Trade Alerts"
+              style={{ width: "25px", height: "25px" }}
+            />
+          }
+          sx={{
+            position: "relative",
+            color: "#fff",
+            "&:hover": { color: "#ff0000" },
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: value === 1 ? "40px" : "0",
+              height: value === 1 ? "40px" : "0",
+              backgroundColor: "#66FCF1",
+              borderRadius: "50%",
+              transform: "translate(-50%, -50%)",
+              transition: "all 0.3s ease-in-out",
+              zIndex: -1,
+            },
+          }}
+          onClick={() => navigate("/tradealerts")}
         />
         {/* 
         <BottomNavigationAction

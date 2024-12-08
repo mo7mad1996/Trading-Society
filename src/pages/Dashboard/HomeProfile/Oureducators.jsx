@@ -50,91 +50,122 @@ function EducatorsCard() {
   }, []);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        gap: 3,
-        flexWrap: "wrap",
-        justifyContent: "center",
-        width: "100%",
-      }}
-    >
-      {instructors.map((instructor) => (
-        <ButtonBase
-          key={instructor.id}
-          sx={{
-            width: "30%",
-            borderRadius: "15px",
-            "&:hover": {
-              cursor: "pointer",
-              borderRadius: "15px",
-              transform: "scale(1.05)", // Grow effect on hover
-              boxShadow: "0 0 80px 1px rgba(236, 188, 86,1)", // Add shadow on hover
-            },
-            transition:
-              "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out", // Smooth transition
-            textAlign: "center", // Ensure text stays centered on hover
-          }}
-        >
-          <Card
+    <>
+      <Typography
+        sx={{
+          fontSize: { xs: "24px", md: "33px" },
+          my: "30px",
+          color: "#fff",
+          // transform: "translateX(15px)",
+          position: "relative",
+          "&::after": {
+            content: "''",
+            position: "absolute",
+            backgroundColor: "#ecbc56",
+            left: "0",
+            top: "100%",
+            width: "100%",
+            height: "3px",
+          },
+        }}
+      >
+        Our{" "}
+        <Typography component="span" sx={{ color: "#ECBC56" }}>
+          Educators
+        </Typography>
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          gap: 3,
+          flexWrap: "wrap",
+          mY: 4,
+          // justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        {instructors.map((instructor) => (
+          <ButtonBase
+            key={instructor.id}
             sx={{
-              boxShadow: 3,
+              width: { lg: "30%", md: "50%", xs: "100%" },
               borderRadius: "15px",
-              backgroundColor: "#2B2B2B",
-              overflow: "hidden", // Prevent image overflow
+              "&:hover": {
+                cursor: "pointer",
+                borderRadius: "15px",
+                transform: "scale(1.05)", // Grow effect on hover
+                boxShadow: "0 0 80px 1px rgba(236, 188, 86,1)", // Add shadow on hover
+              },
+              transition:
+                "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out", // Smooth transition
+              textAlign: "center", // Ensure text stays centered on hover
             }}
           >
-            <Box
+            <Card
               sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "100%",
-                height: "300px",
+                boxShadow: 3,
+                borderRadius: "15px",
+                py: 2,
+
+                backgroundColor: "#2B2B2B",
+                overflow: "hidden", // Prevent image overflow
               }}
             >
-              <CardMedia
-                component="img"
-                height="140"
-                image={instructor.image}
-                alt={instructor.name}
+              <Box
                 sx={{
-                  width: "95%",
-                  height: "95%",
-                  borderRadius: "15px",
-                  boxShadow: "0 0 5px 2px black",
+                  display: "flex",
+                  justifyContent: "center",
+                  width: "100%",
+                  height: "300px",
                 }}
-              />
-            </Box>
-            <CardContent
-              sx={{
-                textAlign: "left",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <Typography
-                variant="h6"
-                color="text.mainTheme"
-                component="div"
-                sx={{ fontWeight: "bold" }}
               >
-                {instructor.name}
-              </Typography>
-              <Typography variant="body5" color="text.secondary" sx={{ mb: 2 }}>
-                {instructor.description}
-              </Typography>
-              <Rating
-                value={instructor.rate}
-                readOnly
-                precision={0.5}
-                sx={{ color: "#E6B800" }}
-              />
-            </CardContent>
-          </Card>
-        </ButtonBase>
-      ))}
-    </Box>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={instructor.image}
+                  alt={instructor.name}
+                  sx={{
+                    width: "95%",
+                    height: "95%",
+                    borderRadius: "15px",
+                    boxShadow: "0 0 5px 2px black",
+                  }}
+                />
+              </Box>
+              <CardContent
+                sx={{
+                  textAlign: "left",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  color="text.mainTheme"
+                  component="div"
+                  sx={{ fontWeight: "bold" }}
+                >
+                  {instructor.name}
+                </Typography>
+                <Typography
+                  variant="body5"
+                  color="text.secondary"
+                  sx={{ mb: 2 }}
+                >
+                  {instructor.description}
+                </Typography>
+                <Rating
+                  value={instructor.rate}
+                  readOnly
+                  precision={0.5}
+                  sx={{ color: "#E6B800" }}
+                />
+              </CardContent>
+            </Card>
+          </ButtonBase>
+        ))}
+      </Box>
+    </>
   );
 }
 
