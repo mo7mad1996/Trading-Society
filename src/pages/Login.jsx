@@ -18,7 +18,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import LoginWithHFS from "./LoginWithHFS/index.jsx";
+import LoginWithHFS from "./LoginWithHfs/index.jsx";
 import { FaLockOpen, FaLock } from "react-icons/fa";
 
 // assets
