@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
 
-import Onlinesessioncard from "./Onlinesessioncard.jsx";
+import RecordedSessions from "./RecordedSessions.jsx";
 
 const RecordedSessionsPage = () => {
   return (
@@ -26,7 +26,7 @@ const RecordedSessionsPage = () => {
           }}
         ></Box>
       </Box>
-      <Onlinesessioncard />
+      <RecordedSessions />
     </Box>
   );
 };
