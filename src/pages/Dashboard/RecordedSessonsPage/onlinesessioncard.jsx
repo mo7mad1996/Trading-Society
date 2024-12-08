@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 import useApi from "@/api";
 
-function OnlineSessionCard() {
+function Onlinesessioncard() {
   // config
   const navigate = useNavigate();
   const api = useApi();
@@ -126,4 +126,4 @@ function OnlineSessionCard() {
   );
 }
 
-export default OnlineSessionCard;
+export default Onlinesessioncard;
