@@ -14,7 +14,7 @@ import CeoMF from "@/Components/Home/CeoMF";
 import CeoMH from "@/Components/CeoMH";
 import AboutUsText from "@/Components/Home/AboutUsText";
 import OurMobileApp from "@/Components/Home/OurMobileApp";
-import TradingLoader from "@/Components/Loaders/TradingLoader";
+import TradingLoader from "@/Components/Loaders/TradingLoader/index.jsx";
 
 // component
 function LandingPage() {

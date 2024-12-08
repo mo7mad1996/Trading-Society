@@ -3,10 +3,10 @@ import { Outlet, useNavigate } from "react-router-dom";
 import useApi from "@/api";
 
 // components
-import Loader from "@/components/Loaders/TradingLoader";
+import TradingLoader from "@/Components/Loaders/TradingLoader/index.jsx";
 import { Box } from "@mui/material";
-import Sidebar from "@/Components/Layouts/Dashboard/Sidebar";
-import Navbar from "@/Components/Layouts/Dashboard/Navbar";
+import Sidebar from "@/Components/Layouts/Dashboard/Sidebar/index.jsx";
+import Navbar from "@/Components/Layouts/Dashboard/Navbar/index.jsx";
 // import FooterProfile from "./FooterProfile";
 import BottomNavbar from "./BottomNavbar";
 import { LoadingContext, TokenContext } from "@/context";

@@ -11,7 +11,7 @@ import { IoIosRadio } from "react-icons/io";
 import { SlCalender } from "react-icons/sl";
 import { LuNewspaper } from "react-icons/lu";
 import MiniSidebar from "./MiniSidebar.jsx";
-import SideBarLinks from "./SideBarLinks";
+import SideBarLinks from "./SideBarLinks.jsx";
 
 // assets
 import imgBg from "@/home_profile_assets/profileb-bg.png";
