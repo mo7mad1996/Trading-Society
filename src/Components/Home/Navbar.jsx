@@ -10,7 +10,7 @@ import {
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo.png";
-import Widget from "./Widget";
+import Widget from "./Widget.jsx";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

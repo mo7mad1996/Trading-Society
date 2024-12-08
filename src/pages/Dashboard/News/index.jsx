@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import BannerProfile from "@/Components/HomeProfile/BannerProfile";
-import Widget2 from "./Widget2";
+import BannerProfile from "@/Components/HomeProfile/BannerProfile.jsx";
+import Widget2 from "./Widget2.jsx";
 
 function News() {
   return (

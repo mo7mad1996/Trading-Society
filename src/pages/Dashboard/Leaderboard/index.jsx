@@ -1,7 +1,7 @@
 import { Box, Typography, Grid } from "@mui/material";
-import LotCalc from "./LotCalc";
-import PipValueCalculator from "./PipValueCalculator";
-import EconomicCalendarIframe from "@/Components/HomeProfile/EconomicCalendar";
+import LotCalc from "./LotCalc.jsx";
+import PipValueCalculator from "./PipValueCalculator.jsx";
+import EconomicCalendarIframe from "@/Components/HomeProfile/EconomicCalendar.jsx";
 
 const Leaderboard = () => {
   return (

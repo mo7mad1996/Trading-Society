@@ -6,10 +6,10 @@ import useApi from "@/api";
 
 // components
 import { Box, Typography } from "@mui/material";
-import OurCourses from "./OurCourses";
+import OurCourses from "./OurCourses/jsx";
 import { FaStar } from "react-icons/fa";
 import { HiOutlineXMark } from "react-icons/hi2";
-import BannerProfile from "@/Components/HomeProfile/BannerProfile";
+import BannerProfile from "@/Components/HomeProfile/BannerProfile.jsx";
 import VideoController from "@/components/VideoController/index.jsx";
 
 // component

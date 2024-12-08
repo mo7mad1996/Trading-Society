@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import BannerProfile from "@/Components/HomeProfile/BannerProfile";
-import Progress from "./Progress";
-import UserInfo from "./UserInfo";
-import EducatorsCard from "./Oureducators";
+import BannerProfile from "@/Components/HomeProfile/BannerProfile.jsx";
+import Progress from "./Progress.jsx";
+import UserInfo from "./UserInfo.jsx";
+import EducatorsCard from "./Oureducators.jsx";
 
 function HomeProfile() {
   return (
