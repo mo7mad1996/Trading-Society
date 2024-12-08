@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
 
-import OnlineSessionCard from "./Onlinesessioncard";
+import OnlineSessionCard from "./Onlinesessioncard.jsx";
 
 const RecordedSessionsPage = () => {
   return (
