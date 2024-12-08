@@ -19,6 +19,7 @@ const CustomVideoPlayer = ({ src, poster }) => {
   const playerRef = useRef(null); // HTML ref
 
   // data
+  const [blobUrl, setBlobUrl] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -87,9 +88,11 @@ const CustomVideoPlayer = ({ src, poster }) => {
     setIsMuted((prev) => !prev);
     playerRef.current?.getInternalPlayer()?.setMuted(!isMuted);
   };
-  useEffect(() => {
-    sessionStorage.clear();
-  }, []);
+  // useEffect(() => {
+  //   sessionStorage.clear();
+  // }, []);
+
+  // useE
 
   // render
   return (

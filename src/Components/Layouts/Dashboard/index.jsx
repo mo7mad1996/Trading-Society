@@ -41,7 +41,7 @@ function Dashboard() {
   }, []);
 
   // render
-  if (isLoading) return <Loader />;
+  if (isLoading) return <TradingLoader />;
   return (
     <Box
       className=""
