@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 // components
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
-import FooterProfile from "@/Components/Layouts/Dashboard/FooterProfile";
-import VideoController from "@/components/VideoController";
+import FooterProfile from "@/Components/Layouts/Dashboard/FooterProfile.jsx";
+import VideoController from "@/components/VideoController/index.jsx";
 import LiveVideoCard from "./LiveVideoCard.jsx";
 
 import useApi from "@/api";

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import VideoController from "@/components/VideoController";
+import VideoController from "@/components/VideoController/index.jsx";
 
 const CustomVideoPlayer = () => {
   let { videoUrl } = useParams();
