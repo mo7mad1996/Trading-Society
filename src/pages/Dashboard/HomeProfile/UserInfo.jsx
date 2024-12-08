@@ -115,7 +115,6 @@ const UserInfo = () => {
             <Typography
               sx={{
                 color: "#fff",
-                fontSize: "35px",
                 fontSize: { md: "35px", sm: "27px", xs: "20px" },
                 mb: ".5em",
                 fontWeight: "bold",
