@@ -7,7 +7,7 @@ import TradingLoader from "@/Components/Loaders/TradingLoader/index.jsx";
 import { Box } from "@mui/material";
 import Sidebar from "@/Components/Layouts/Dashboard/Sidebar/index.jsx";
 import Navbar from "@/Components/Layouts/Dashboard/Navbar/index.jsx";
-// import FooterProfile from "./FooterProfile/jsx";
+// import FooterProfile from "./FooterProfile.jsx";
 import BottomNavbar from "./BottomNavbar.jsx";
 import { LoadingContext, TokenContext } from "@/context";
 
