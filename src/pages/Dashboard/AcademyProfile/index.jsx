@@ -6,7 +6,7 @@ import useApi from "@/api";
 
 // components
 import { Box, Typography } from "@mui/material";
-import OurCourses from "./OurCourses/jsx";
+import OurCourses from "./OurCourses.jsx";
 import { FaStar } from "react-icons/fa";
 import { HiOutlineXMark } from "react-icons/hi2";
 import BannerProfile from "@/Components/HomeProfile/BannerProfile.jsx";
