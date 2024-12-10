@@ -76,7 +76,7 @@ function RecordedSessions() {
               backgroundColor: "#2B2B2B",
               height: "100%",
               p: 2,
-
+              width: "100%",
               overflow: "hidden", // Prevent image overflow
             }}
           >
