@@ -21,7 +21,7 @@ function Banner() {
   }, []);
 
   return (
-    <Box sx={{ mt: "200px", mb: "50px" }}>
+    <Box sx={{ mt: { md: "200px", xs: "200px" }, mb: "50px" }}>
       <iframe
         style={{ width: "100%", aspectRatio: "16 / 9", border: "none" }}
         src="https://www.youtube.com/embed/twVE2MtYEm8?controls=0&autoplay=1&loop=1&mute=1"

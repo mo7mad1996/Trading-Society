@@ -11,10 +11,13 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo.png";
 import Widget from "./Widget.jsx";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  gsap.registerPlugin(ScrollToPlugin);
 
   const links = [
     { name: "Home", href: "#home" },
@@ -29,17 +32,13 @@ function Navbar() {
   const goTo = (e, id) => {
     if (id.startsWith("#")) {
       e.preventDefault();
-      const targetElement = document.querySelector(id);
+      const targetElement = document.getElementById(id.substr(1));
 
       if (targetElement) {
         const offsetTop = targetElement.offsetTop;
         const screenHeight = window.innerHeight;
-        const scrollPosition = offsetTop - screenHeight / 2;
-
-        window.scrollTo({
-          top: scrollPosition,
-          behavior: "smooth",
-        });
+        const scrollPosition = offsetTop - screenHeight / 3;
+        gsap.to(window, { scrollTo: scrollPosition, ease: "power2.out" });
       }
     }
   };
@@ -241,7 +240,10 @@ function Navbar() {
               key={link.name}
               className="sidebar-link"
               to={link.href}
-              onClick={(e) => handleToggle(e)}
+              onClick={(e) => {
+                handleToggle(e);
+                goTo(e, link.href);
+              }}
               style={{
                 color: "#fff",
                 textAlign: "center",

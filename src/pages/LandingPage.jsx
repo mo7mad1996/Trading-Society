@@ -24,9 +24,19 @@ function LandingPage() {
   return (
     <Box>
       <Navbar />
-      <Box id="home" sx={{ width: "91%", mx: "auto", mb: "200px" }}>
+      <Box
+        id="home"
+        sx={{
+          width: "91%",
+          mx: "auto",
+          mb: "200px",
+          // pt: { md: 0, xs: "200px" },
+        }}
+      >
         <Banner />
-        <AboutUsText />
+        <Box>
+          <AboutUsText />
+        </Box>
       </Box>
       <Box sx={{ mt: "0px" }}>
         <MissionAndVision />
@@ -34,7 +44,7 @@ function LandingPage() {
       <Box sx={{ mt: "150px", width: "91%", margin: "auto" }}>
         <OurMobileApp />
       </Box>
-      <div id="tradealerts" style={{ marginTop: "150px" }}>
+      <div id="tradealerts" style={{ marginTop: "200px" }}>
         <TradeAlert />
       </div>
       <Box>

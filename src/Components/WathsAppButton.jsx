@@ -31,7 +31,6 @@ const TelegramButton = () => {
         },
       }}
       initial={{ y: 30, boxShadow: "0px 0px 10px rgba(0,0,0,0.5)" }}
-      whileInView={{ y: 5, boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.9)" }}
       transition={{
         duration: 1,
         repeat: Infinity,

@@ -165,6 +165,7 @@ function CeoMH() {
               overflow: "hidden",
               backgroundSize: "contain",
             }}
+            whileInView={{ opacity: 1 }}
             initial={{ y: 5 }}
             animate={{ y: `${Math.min(Math.max(offsetY - 50, -5), 100)}px` }} // Animation limits
             transition={{ ease: "linear", duration: 0.5 }}
