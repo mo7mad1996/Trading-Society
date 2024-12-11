@@ -58,7 +58,7 @@ const UserRecordedSession = () => {
       </Box>
       <Box
         sx={{
-          display: { md: "flex" },
+          display: { lg: "flex" },
           justifyContent: "left",
           alignItems: "space-between",
           gap: 4,
@@ -70,8 +70,8 @@ const UserRecordedSession = () => {
       >
         <Box
           sx={{
-            width: { md: "30%", xs: "100%" },
-            height: "100%",
+            width: { sm: "100%", lg: "30%", xs: "100%" },
+            height: { xs: "300px", sm: "400px", md: "450px", lg: "350px" },
             borderRadius: "15px",
             backgroundColor: "text.mainTheme",
             objectFit: "cover",
@@ -82,7 +82,7 @@ const UserRecordedSession = () => {
         />
         <Box
           sx={{
-            width: { md: "40%", xs: "100%" },
+            width: { lg: "40%", xs: "100%" },
             height: "100%",
             borderRadius: "15px",
           }}
