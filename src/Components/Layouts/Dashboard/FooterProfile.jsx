@@ -10,6 +10,8 @@ function FooterProfile() {
         width: "100%",
         py: { xs: 4, md: 1 },
         color: "#fff",
+        mt: "12px",
+
         borderRadius: "15px",
       }}
     >

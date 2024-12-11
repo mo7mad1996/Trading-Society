@@ -93,6 +93,7 @@ function Footer() {
         width: "100%",
         py: { xs: 4, md: 8 },
         color: "#fff",
+        mt: "12px",
       }}
     >
       <Container>
@@ -293,12 +294,11 @@ function Footer() {
                 color: "#000",
                 top: "52%",
                 transform: "translateY(-50%)",
-                right: {xs:"40px",md:"10px"},
+                right: { xs: "40px", md: "10px" },
                 fontSize: "15px",
                 letterSpacing: "-0.17px",
                 lineHeight: "18px",
                 textTransform: "capitalize",
-
               }}
             >
               Click Here
