@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { FaRegPlayCircle } from "react-icons/fa";
 
 // Array with data
 const LiveVideoCard = ({ liveSessions }) => {
@@ -37,6 +38,7 @@ const LiveVideoCard = ({ liveSessions }) => {
         sx={{
           display: "flex",
           flexWrap: "wrap",
+          justifyContent: "space-between",
           gap: "1em",
         }}
       >
@@ -45,16 +47,18 @@ const LiveVideoCard = ({ liveSessions }) => {
             key={index}
             sx={{
               flex: 1,
-              minWidth: "300px",
               borderRadius: "15px",
               backgroundColor: "#2B2B2B",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
               position: "relative",
+              maxWidth: "350px",
+              minWidth: "300px",
+
               overflow: "hidden",
               cursor: "pointer",
-              pt: "10px",
+              p: "10px",
               transition: "box-shadow 0.3s ease-in-out",
               "&:hover": {
                 boxShadow: "0 0 80px 1px rgba(236, 188, 86, 1)", // Glow effect on hover
@@ -64,7 +68,7 @@ const LiveVideoCard = ({ liveSessions }) => {
               },
             }}
             onClick={() =>
-              navigate(`/video/${encodeURIComponent(video.video)}`)
+              navigate(`/video_/${encodeURIComponent(video.video)}`)
             }
           >
             {/* Image */}
@@ -73,7 +77,8 @@ const LiveVideoCard = ({ liveSessions }) => {
               src={video.image}
               alt={video.title}
               sx={{
-                width: "95%",
+                display: "block",
+                width: "100%",
                 height: "200px",
                 borderRadius: "15px",
                 objectFit: "cover",
@@ -101,10 +106,10 @@ const LiveVideoCard = ({ liveSessions }) => {
                 fontFamily: "TanseekModernProArabic-ExBold",
               }}
             >
-              Play Video
+              <FaRegPlayCircle />
             </Box>
             {/* Title and Description */}
-            <Box sx={{ padding: "15px", textAlign: "center" }}>
+            <Box sx={{ padding: "15px", width: "100%", textAlign: "center" }}>
               <Typography variant="h5" fontWeight={600} color="text.mainTheme">
                 {video.title}
               </Typography>

@@ -58,7 +58,7 @@ const UserRecordedSession = () => {
       </Box>
       <Box
         sx={{
-          display: "flex",
+          display: { md: "flex" },
           justifyContent: "left",
           alignItems: "space-between",
           gap: 4,
@@ -70,19 +70,19 @@ const UserRecordedSession = () => {
       >
         <Box
           sx={{
-            width: "30%",
+            width: { md: "30%", xs: "100%" },
             height: "100%",
             borderRadius: "15px",
             backgroundColor: "text.mainTheme",
-            objectFit: "cover", // Ensures the image fits properly within the Box
+            objectFit: "cover",
           }}
-          component="img" // Correct HTML tag for images
-          src={data.photo} // Source of the image
-          alt={data.name} // Alt text for accessibility
+          component="img"
+          src={data.photo}
+          alt={data.name}
         />
         <Box
           sx={{
-            width: "40%",
+            width: { md: "40%", xs: "100%" },
             height: "100%",
             borderRadius: "15px",
           }}

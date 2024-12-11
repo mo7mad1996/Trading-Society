@@ -13,7 +13,7 @@ function AboutUsText() {
         paddingX: { xs: "20px", sm: "30px", md: "50px" },
         paddingY: { xs: "20px", sm: "30px", md: "30px" },
         //  backgroundColor: "white",
-        height: "20vh",
+        // height: "20vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -27,7 +27,7 @@ function AboutUsText() {
           transform: "translateX(-110px)",
           gap: { xs: "10px", md: "30px" },
           paddingY: "10px",
-          paddingLeft: { xs: "20px", md: "50px" },
+          paddingLeft: { xs: "30px", md: "50px" },
           mt: "10px",
           ml: "20px",
         }}

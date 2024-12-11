@@ -34,7 +34,7 @@ function Navbar() {
       if (targetElement) {
         const offsetTop = targetElement.offsetTop;
         const screenHeight = window.innerHeight;
-        const scrollPosition = offsetTop - screenHeight / 4;
+        const scrollPosition = offsetTop - screenHeight / 2;
 
         window.scrollTo({
           top: scrollPosition,

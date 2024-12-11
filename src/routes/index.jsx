@@ -14,6 +14,7 @@ import TradeAlertProfile from "@/pages/Dashboard/TradeAlertProfile/index.jsx";
 import Calender from "@/pages/Dashboard/Calender/index.jsx";
 import News from "@/pages/Dashboard/News/index.jsx";
 import FullScreenVideo from "@/pages/Dashboard/FullScreenVideo/index.jsx";
+import WithVP from "@/pages/Dashboard/FullScreenVideo/WithVP.jsx";
 import CourseWithId from "@/pages/Dashboard/CourseWithId/index.jsx";
 import Chart from "@/pages/Dashboard/Chart/index.jsx";
 import Gang from "@/pages/Dashboard/Gang/index.jsx";
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: "video/:videoUrl",
         element: <FullScreenVideo />,
+      },
+      {
+        path: "video_/:videoUrl",
+        element: <WithVP />,
       },
 
       {
