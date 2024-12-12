@@ -1,7 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import debounce from "lodash.debounce";
-
-// component
 import ReactPlayer from "react-player";
 
 // icons
@@ -9,17 +7,15 @@ import { FaPlay } from "react-icons/fa";
 import { IoMdPause } from "react-icons/io";
 import { RiFullscreenFill, RiFullscreenExitLine } from "react-icons/ri";
 import { IoVolumeMedium, IoVolumeMute } from "react-icons/io5";
+import { ImSpinner2 } from "react-icons/im"; // Spinner icon
 
 // css
 import css from "./style.module.css";
 
-// component
 const CustomVideoPlayer = ({ src, poster }) => {
-  const video_controller = useRef(null); // HTML ref
-  const playerRef = useRef(null); // HTML ref
+  const video_controller = useRef(null);
+  const playerRef = useRef(null);
 
-  // data
-  const [blobUrl, setBlobUrl] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -27,45 +23,26 @@ const CustomVideoPlayer = ({ src, poster }) => {
   const [volume, setVolume] = useState(1);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isBuffering, setIsBuffering] = useState(false); // New state for buffering
 
-  // methods
   const handlePlayPause = () => {
     setIsPlaying((prev) => !prev);
-    if (isPlaying) {
-      playerRef.current?.getInternalPlayer()?.pause();
-    } else {
-      playerRef.current?.getInternalPlayer()?.play();
-    }
   };
 
   const handleSeek = (e) => {
-    const newTime = e.target.value;
+    const newTime = parseFloat(e.target.value);
     playerRef.current?.seekTo(newTime);
     setCurrentTime(newTime);
   };
 
   const handlePlaybackRateChange = debounce((e) => {
     const newRate = parseFloat(e.target.value);
-
-    if (newRate !== playbackRate) {
-      setPlaybackRate(newRate);
-      const internalPlayer = playerRef.current?.getInternalPlayer();
-      if (internalPlayer) {
-        internalPlayer.setPlaybackRate(newRate);
-      }
-    }
+    setPlaybackRate(newRate);
   }, 300);
 
   const handleVolumeChange = (e) => {
     const newVolume = parseFloat(e.target.value);
-
-    if (newVolume !== volume) {
-      setVolume(newVolume);
-      const internalPlayer = playerRef.current?.getInternalPlayer();
-      if (internalPlayer && typeof internalPlayer.setVolume === "function") {
-        internalPlayer.setVolume(newVolume);
-      }
-    }
+    setVolume(newVolume);
   };
 
   const toggleFullscreen = () => {
@@ -77,6 +54,10 @@ const CustomVideoPlayer = ({ src, poster }) => {
     setIsFullscreen(!isFullscreen);
   };
 
+  const toggleMute = () => {
+    setIsMuted((prev) => !prev);
+  };
+
   const handleDuration = (duration) => {
     setDuration(duration);
   };
@@ -84,17 +65,15 @@ const CustomVideoPlayer = ({ src, poster }) => {
   const handleProgress = (state) => {
     setCurrentTime(state.playedSeconds);
   };
-  const toggleMute = () => {
-    setIsMuted((prev) => !prev);
-    playerRef.current?.getInternalPlayer()?.setMuted(!isMuted);
+
+  const handleBuffer = () => {
+    setIsBuffering(true); // Start buffering
   };
-  // useEffect(() => {
-  //   sessionStorage.clear();
-  // }, []);
 
-  // useE
+  const handleBufferEnd = () => {
+    setIsBuffering(false); // End buffering
+  };
 
-  // render
   return (
     <div className={css.video_container} ref={video_controller}>
       {poster && !isPlaying ? (
@@ -102,22 +81,31 @@ const CustomVideoPlayer = ({ src, poster }) => {
           src={poster}
           alt="Poster"
           className={css.poster}
-          onClick={() => setIsPlaying(true)} // Show video when the poster is clicked
+          onClick={() => setIsPlaying(true)}
         />
       ) : (
-        <ReactPlayer
-          ref={playerRef}
-          url={src}
-          playing={isPlaying}
-          width="100%"
-          height="100%"
-          controls={false}
-          onProgress={handleProgress}
-          onDuration={handleDuration}
-          muted={isMuted}
-          volume={parseFloat(volume)}
-          playbackRate={playbackRate}
-        />
+        <div className={css.video_wrapper}>
+          <ReactPlayer
+            ref={playerRef}
+            url={src}
+            playing={isPlaying}
+            width="100%"
+            height="100%"
+            controls={false}
+            onProgress={handleProgress}
+            onDuration={handleDuration}
+            muted={isMuted}
+            volume={volume}
+            playbackRate={playbackRate}
+            onBuffer={handleBuffer}
+            onBufferEnd={handleBufferEnd}
+          />
+          {isBuffering && (
+            <div className={css.spinner_container}>
+              <ImSpinner2 className={css.spinner} />
+            </div>
+          )}
+        </div>
       )}
       <div className={css.controller}>
         <button onClick={handlePlayPause}>
@@ -136,14 +124,10 @@ const CustomVideoPlayer = ({ src, poster }) => {
           />
         </label>
 
-        <button
-          onClick={toggleMute}
-          style={{
-            fontSize: "16px",
-          }}
-        >
+        <button onClick={toggleMute} style={{ fontSize: "16px" }}>
           {isMuted ? <IoVolumeMute /> : <IoVolumeMedium />}
         </button>
+
         <label className={css.slider1}>
           <input
             type="range"

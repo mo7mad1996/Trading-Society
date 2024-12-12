@@ -165,7 +165,7 @@ function OurCourses() {
                     justifyContent: "center",
                     alignItems: "center",
                     width: "100%",
-                    height: "200px",
+                    height: "150px",
                   }}
                   component="img"
                   image={course?.photo}

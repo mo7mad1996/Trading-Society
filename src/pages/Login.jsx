@@ -169,14 +169,14 @@ function Login() {
                       },
                     },
                   }}
-                  value={formik.values.email}
+                  value={formik.values?.email}
                   name="email"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   label="Email"
                 />
               </FormControl>
-              {formik.errors.email && formik.touched.email && (
+              {formik.errors?.email && formik.touched?.email && (
                 <Box
                   sx={{
                     // height: "50px",
@@ -189,7 +189,7 @@ function Login() {
                     py: 0,
                   }}
                 >
-                  {formik.errors.email}
+                  {formik.errors?.email}
                 </Box>
               )}
             </Box>
@@ -209,7 +209,7 @@ function Login() {
                   onBlur={formik.handleBlur}
                   fullWidth
                   placeholder="Password"
-                  value={formik.values.password}
+                  value={formik.values?.password}
                   type={showPassword ? "text" : "password"}
                   endAdornment={
                     <InputAdornment position="end">
@@ -230,7 +230,7 @@ function Login() {
                   label="Password"
                 />
               </FormControl>
-              {formik.errors.password && formik.touched.password && (
+              {formik.errors?.password && formik.touched?.password && (
                 <Box
                   sx={{
                     // height: "50px",
@@ -243,7 +243,7 @@ function Login() {
                     py: 0,
                   }}
                 >
-                  {formik.errors.password}
+                  {formik.errors?.password}
                 </Box>
               )}
             </Box>

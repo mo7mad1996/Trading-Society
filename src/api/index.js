@@ -5,7 +5,7 @@ const useApi = () => {
   const navigate = useNavigate();
 
   const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: "https://laravelapi.tradingsociety.net/api/v1",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
-import profileBanner from "@/assets/images/home/banner.jpg";
+import profileBanner from "@/assets/images/home/bannerCroped.jpg";
 
 function BannerProfile() {
   return (
@@ -9,7 +9,7 @@ function BannerProfile() {
       target="_blank"
       style={{ display: "block" }}
     >
-      <img style={{ display: "block", width: "100%" }} src={profileBanner} />
+      <img style={{ display: "block", width: "100%", height: "50%" }} src={profileBanner} />
     </a>
   );
 }
