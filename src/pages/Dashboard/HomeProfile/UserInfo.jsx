@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import useApi from "@/api";
 import { TokenContext } from "@/context";
+import { dayjs } from "dayjs";
 
 // assets
 import appstore from "@/home_profile_assets/appstore.png";
@@ -23,7 +24,9 @@ const UserInfo = () => {
   const getUserInfo = async () => {
     try {
       const res = await api.get("/user");
+
       const data = res.data.user;
+
       setUser(data);
       updateUserInfo(data);
     } catch (err) {
@@ -34,16 +37,19 @@ const UserInfo = () => {
     setUserInfo([
       {
         label: "Name",
-        value: `${user.user_first_name} ${user.user_last_name}`,
+        value: user.user_first_name,
       },
       { label: "E-mail", value: user.user_email },
-      { label: "Subscription", value: "---" },
+      { label: "Subscription", value: user.package },
       { label: "Phone Number", value: user.phone },
       {
         label: "Start Date",
-        value: "---",
+        value: user.subscripition_start_at || "---",
+        //  dayjs(user.subscripition_start_at || Date.now()).format(
+        //   "YYYY-MM-DD"
+        // ),
       },
-      { label: "Expiratiion Date", value: "---" },
+      { label: "Expiratiion Date", value: user.subscripition_end_at || "---" },
     ]);
   };
 
@@ -121,7 +127,8 @@ const UserInfo = () => {
                 textTransform: "capitalize",
               }}
             >
-              {user?.user_first_name} {user?.user_last_name}
+              {user?.user_first_name}
+              {/* {user?.user_last_name} */}
             </Typography>
             <Typography sx={{ color: "gray", mt: "-20px" }}>
               ID: {user?.user_id}

@@ -27,3 +27,6 @@ dist-ssr
 .env
 *.zip
 .vercel
+
+
+test.json

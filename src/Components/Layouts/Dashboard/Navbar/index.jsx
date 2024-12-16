@@ -97,7 +97,8 @@ function Navbar({ user }) {
               textTransform: "capitalize",
             }}
           >
-            {user?.user_first_name} {user?.user_last_name}
+            {user?.user_first_name}
+            {/* {user?.user_last_name} */}
           </Typography>
           <Typography sx={{ color: "gray", mt: "-10px", fontSize: "20px" }}>
             ID: {user?.user_id}

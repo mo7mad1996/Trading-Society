@@ -28,12 +28,14 @@ import RecordedSessonsPage from "@/pages/Dashboard/RecordedSessonsPage/index.jsx
 import UserRecordedSession from "@/pages/Dashboard/UserRecordedSession/index.jsx";
 import OpenDialog from "@/pages/Dashboard/TradeAlertProfile/OpenDialog";
 import OnlineSessions from "@/pages/Dashboard/OnlineSessions";
+import Redirect from "@/pages/Redirect";
 
 // routes
 const router = createBrowserRouter([
   { index: true, element: <LandingPage /> },
   { path: "/test", element: <Test /> },
   { path: "/login", element: <Login /> },
+  { path: "/redirect", element: <Redirect /> },
 
   {
     path: "/",
