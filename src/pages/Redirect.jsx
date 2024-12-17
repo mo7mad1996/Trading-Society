@@ -10,7 +10,8 @@ export default function Redirect() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem("token", token);
+    localStorage.setItem("token", decodeURIComponent(token));
+
     if (token) navigate("/home");
     else navigate("/login");
   }, []);
